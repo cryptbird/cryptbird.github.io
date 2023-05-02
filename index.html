@@ -1,787 +1,979 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+rel="stylesheet"
+/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+.new_footer_area {
+    background: #fbfbfd;
+}
+
+
+.new_footer_top {
+    padding: 120px 0px 270px;
+    position: relative;
+      overflow-x: hidden;
+}
+.new_footer_area .footer_bottom {
+    padding-top: 5px;
+    padding-bottom: 50px;
+}
+.footer_bottom {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    color: #7f88a6;
+    padding: 27px 0px;
+}
+.new_footer_top .company_widget p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 28px;
+    color: #6a7695;
+    margin-bottom: 20px;
+}
+.new_footer_top .company_widget .f_subscribe_two .btn_get {
+    border-width: 1px;
+    margin-top: 20px;
+}
+.btn_get_two:hover {
+    background: transparent;
+    color: #5e2ced;
+}
+.btn_get:hover {
+    color: #fff;
+    background: #6754e2;
+    border-color: #6754e2;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+
+
+.new_footer_top .f_widget.about-widget .f_list li a:hover {
+    color: #5e2ced;
+}
+.new_footer_top .f_widget.about-widget .f_list li {
+    margin-bottom: 11px;
+}
+.f_widget.about-widget .f_list li:last-child {
+    margin-bottom: 0px;
+}
+.f_widget.about-widget .f_list li {
+    margin-bottom: 15px;
+}
+.f_widget.about-widget .f_list {
+    margin-bottom: 0px;
+}
+.new_footer_top .f_social_icon a {
+    width: 44px;
+    height: 44px;
+    line-height: 43px;
+    background: transparent;
+    border: 1px solid #e2e2eb;
+    font-size: 24px;
+}
+.f_social_icon a {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    font-size: 14px;
+    line-height: 45px;
+    color: #858da8;
+    display: inline-block;
+    background: #ebeef5;
+    text-align: center;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+.ti-facebook:before {
+    content: "\e741";
+}
+.ti-twitter-alt:before {
+    content: "\e74b";
+}
+.ti-vimeo-alt:before {
+    content: "\e74a";
+}
+.ti-pinterest:before {
+    content: "\e731";
+}
+
+.btn_get_two {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: #5e2ced;
+    border-color: #5e2ced;
+    color: #5e2ced;
+}
+
+.btn_get_two:hover {
+    background: #5e2ced;
+    color: #fff;
+}
+
+.new_footer_top .f_social_icon a:hover {
+    background: #5e2ced;
+    border-color: #5e2ced;
+  color:white;
+}
+.new_footer_top .f_social_icon a + a {
+    margin-left: 4px;
+}
+.new_footer_top .f-title {
+    margin-bottom: 30px;
+    color: #263b5e;
+}
+.f_600 {
+    font-weight: 600;
+}
+.f_size_18 {
+    font-size: 18px;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #4b505e;
+}
+.new_footer_top .f_widget.about-widget .f_list li a {
+    color: #6a7695;
+}
+
+
+.new_footer_top .footer_bg {
+    position: absolute;
+    bottom: 0;
+    background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigB8iI5tb8WSVBuVUGc9UjjB8O0708X7Fdic_4O1LT4CmLHoiwhanLXiRhe82yw0R7LgACQ2IhZaTY0hhmGi0gYp_Ynb49CVzfmXtYHUVKgXXpWvJ_oYT8cB4vzsnJLe3iCwuzj-w6PeYq_JaHmy_CoGoa6nw0FBo-2xLdOPvsLTh_fmYH2xhkaZ-OGQ/s16000/footer_bg.png") no-repeat scroll center 0;
+    width: 100%;
+    height: 266px;
+}
+
+.new_footer_top .footer_bg .footer_bg_one {
+    background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEia0PYPxwT5ifToyP3SNZeQWfJEWrUENYA5IXM6sN5vLwAKvaJS1pQVu8mOFFUa_ET4JuHNTFAxKURFerJYHDUWXLXl1vDofYXuij45JZelYOjEFoCOn7E6Vxu0fwV7ACPzArcno1rYuVxGB7JY6G7__e4_KZW4lTYIaHSLVaVLzklZBLZnQw047oq5-Q/s16000/volks.gif") no-repeat center center;
+    width: 330px;
+    height: 105px;
+  background-size:100%;
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    -webkit-animation: myfirst 22s linear infinite;
+    animation: myfirst 22s linear infinite;
+}
+
+.new_footer_top .footer_bg .footer_bg_two {
+    background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyLGwEUVwPK6Vi8xXMymsc-ZXVwLWyXhogZxbcXQYSY55REw_0D4VTQnsVzCrL7nsyjd0P7RVOI5NKJbQ75koZIalD8mqbMquP20fL3DxsWngKkOLOzoOf9sMuxlbyfkIBTsDw5WFUj-YJiI50yzgVjF8cZPHhEjkOP_PRTQXDHEq8AyWpBiJdN9SfQA/s16000/cyclist.gif") no-repeat center center;
+    width: 88px;
+    height: 100px;
+  background-size:100%;
+    bottom: 0;
+    left: 38%;
+    position: absolute;
+    -webkit-animation: myfirst 30s linear infinite;
+    animation: myfirst 30s linear infinite;
+}
+
+
+
+@-moz-keyframes myfirst {
+  0% {
+    left: -25%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@-webkit-keyframes myfirst {
+  0% {
+    left: -25%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes myfirst {
+  0% {
+    left: -25%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/*************footer End*****************/
+
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400);
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #aca49c;
+  font-size: 0.875em;
+}
+
+input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder {
+  color: #bbb5af;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: #aca49c;
+  font-size: 0.875em;
+}
+
+input:focus::-moz-placeholder, textarea:focus::-moz-placeholder {
+  color: #bbb5af;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #aca49c;
+  font-size: 0.875em;
+}
+
+input:focus::placeholder, textarea::focus:placeholder {
+  color: #bbb5af;
+}
+
+input::-ms-placeholder, textarea::-ms-placeholder {
+  color: #aca49c;
+  font-size: 0.875em;
+}
+
+input:focus::-ms-placeholder, textarea:focus::-ms-placeholder {
+  color: #bbb5af;
+}
+
+/* on hover placeholder */
+
+input:hover::-webkit-input-placeholder, textarea:hover::-webkit-input-placeholder {
+  color: #e2dedb;
+  font-size: 0.875em;
+}
+
+input:hover:focus::-webkit-input-placeholder, textarea:hover:focus::-webkit-input-placeholder {
+  color: #cbc6c1;
+}
+
+input:hover::-moz-placeholder, textarea:hover::-moz-placeholder {
+  color: #e2dedb;
+  font-size: 0.875em;
+}
+
+input:hover:focus::-moz-placeholder, textarea:hover:focus::-moz-placeholder {
+  color: #cbc6c1;
+}
+
+input:hover::placeholder, textarea:hover::placeholder {
+  color: #e2dedb;
+  font-size: 0.875em;
+}
+
+input:hover:focus::placeholder, textarea:hover:focus::placeholder {
+  color: #cbc6c1;
+}
+
+input:hover::placeholder, textarea:hover::placeholder {
+  color: #e2dedb;
+  font-size: 0.875em;
+}
+
+input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
+  color: #cbc6c1;
+}
+
+/* body {
+  font-family: 'Lato', sans-serif;
+  background: #e2dedb;
+  color: #b3aca7;
+} */
+
+.header {
+  position: relative;
+  margin: 100px 0 25px 0;
+  font-size: 2.3em;
+  text-align: center;
+  letter-spacing: 7px;
+}
+
+#form {
+    /* border: 1px solid black; */
+  position: relative;
+  width: 500px;
+  margin: 50px auto 100px auto;
+}
+
+.input1 {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875em;
+  width: 100%;
+  height: 50px;
+  padding: 0px 15px 0px 15px;
+  border-radius:10px;
+  background: transparent;
+  outline: none;
+  color: #726659;
+  text-align: center;
   
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title></title>
-    <style type="text/css">
-      #outlook a{padding:0;}
-      .ReadMsgBody{width:100%;} .ExternalClass{width:100%;}
-      .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
-      body, table, td, p, a, li, blockquote{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;}
-      table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
-      img{-ms-interpolation-mode:bicubic;}
-
-
-
-
-      body{margin:0; padding:0;}
-      img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
-      table{border-collapse:collapse !important;}
-      body, #pagewrap_table, #pagewrap_cell{height:100% !important; margin:0; padding:0; width:100% !important;}
-
-
-
-
-      body, #pagewrap_table{
-        background-color:#F0F1F2;
-      }
 
-      #pagewrap_cell{
-        padding-top:40px;
-        padding-right:20px;
-        padding-bottom:30px;
-        padding-left:20px;
-      }
-      #container_table{
-        width:600px;
-      }
-
-      h1{
-        color:#4E595D;
-        font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;
-        font-size:28px;
-        font-style:normal;
-        font-weight:300;
-        line-height:120%;
-        letter-spacing:normal;
-        margin:0;
-        padding-top:0;
-        padding-right:0;
-        padding-bottom:15px;
-        padding-left:0;
-      }
-
-      h2{
-        color:#4E595D;
-        font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;
-        font-size:22px;
-        font-style:normal;
-        font-weight:300;
-        line-height:120%;
-        letter-spacing:normal;
-        margin:0;
-        padding-top:0;
-        padding-right:0;
-        padding-bottom:15px;
-        padding-left:0;
-      }
-
-
-
-
-      #preheader_table{
-        display:none !important;
-      }
-
-      .preheader_cell{
-        color:#F0F1F2;
-      }
-
-
-
-
-      #header_table{
-        background-color:#F0F1F2;
-      }
-
-      .header_cell{
-        text-align:left;
-        padding-top:0;
-        padding-right:0;
-        padding-bottom:30px;
-        padding-left:0;
-      }
-
-
-
-
-      #content_table{
-        background-color:#FFFFFF;
-      }
-
-      .content_cell{
-        color:#4E595D;
-        font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;
-        font-size:14px;
-        line-height:150%;
-        text-align:left;
-        padding:0;
-      }
-
-      .content_cell_mobile {
-        display:none;
-      }
-
-      .content_cell a:link, .content_cell a:visited,  .content_cell a .yshortcuts, .content_cell a span {
-        color:#2D5BE3;
-        text-decoration:underline;
-      }
-
-      .content_cell img{
-        height:auto;
-        max-width:600px;
-      }
-
-
-
-
-      #footer_table{
-        background-color:#F0F1F2;
-      }
-
-      .footer_cell{
-        color:#959B9E;
-        font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;
-        font-size:10px;
-        line-height:150%;
-        padding-top:10px;
-        padding-right:0;
-        padding-bottom:0;
-        padding-left:0;
-        text-align:center;
-      }
-
-      .footer_cell a:link, .footer_cell a:visited,  .footer_cell a .yshortcuts, .footer_cell a span {
-        color:#959B9E;
-        text-decoration:underline;
-      }
-
-
-
-      #hero {
-        background-color: #153bb5;
-        background-image: url('https://4sq-email-assets.s3.amazonaws.com/fs-welcome-update/images/hero-bg.jpg');
-        background-repeat: no-repeat;
-        background-position: top center;
-      }
-
-      #hero .hero_heading {
-        padding-left: 30px;
-        padding-right: 30px;
-      }
-
-      #hero .hero_heading h1 {
-        font-size: 30px;
-        color: #fff;
-        padding: 0;
-      }
-
-      #hero .hero_body {
-        color: #fff;
-      }
-
-
-
-      #greatest {
-        border-bottom: 1px solid #eee;
-      }
-
-      #greatest.greatest_heading h1 {
-        font-size: 18px;
-        padding: 0;
-      }
-
-
-
-      #lifehacks .lifehacks_wrap {
-        border-bottom: 1px solid #eeeeee;
-      }
-
-      #lifehacks .lifehacks_title h1 {
-        font-size: 22px;
-        padding: 0;
-      }
-
-
-
-      #hungry {
-        background-color: #464f51;
-        background-image: url('https://4sq-email-assets.s3.amazonaws.com/fs-welcome-update/images/hungry-bg.jpg');
-        background-repeat: no-repeat;
-        background-position: top center;
-      }
-
-      #hungry .hungry_body {
-        color: #fff;
-      }
-
-
-
-
-            @media only screen and (max-width: 480px){
-
-
-
-        body, table, td, p, a, li, blockquote{-webkit-text-size-adjust:none !important;}
-                body{width:100% !important; min-width:100% !important;}
-
-
-
-
-        td[id=pagewrap_cell]{
-          padding-top:20px !important;
-          padding-right:10px !important;
-          padding-bottom:15px !important;
-          padding-left:10px !important;
+  border: solid 1.5px #b3aca7;
+  border-bottom: none;
+  
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+}
+
+.input1:hover {
+  background: #b3aca7;
+  color: #e2dedb;
+}
+
+textarea {
+  width: 100%;
+  text-align: center;
+  max-width: 100%;
+  height: 110px;
+  max-height: 110px;
+  padding: 15px;
+  
+  background: transparent;
+  outline: none;
+  border-radius: 10px;
+  color: #726659;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875em;
+  line-height: 100px;
+  border: solid 1.5px #b3aca7;
+  
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+}
+
+textarea:hover {
+  background: #b3aca7;
+  color: #e2dedb;
+}
+textarea::placeholder {
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+#submit {
+  width: 502px;
+  
+  padding: 0;
+  margin: 5% 0px 0px 0px;
+  
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875em;
+  color: #b3aca7;
+  
+  outline:none;
+  cursor: pointer;
+  background-color: #4b505e;
+
+  
+  border: solid 1px #b3aca7;
+  border-top: none;
+}
+
+#submit:hover {
+    background-color: #e2dedb;
+  color: #4b505e;
+}
+
+
+
+
+
+
+
+        * {
+
+            border: 1px solid black;
         }
 
-        table[id=container_table]{
-          max-width:600px !important;
-          width:100% !important;
+        body {
+            /* border: 1px solid black; */
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;
+            height: max-content;
+            /* width: 95vw;
+            margin-left: 2.5vw;
+            display: flex;
+            flex-direction: column;
+        margin-right: 2.5vw; */
         }
 
-        td[class=header_cell]{
-          text-align:center !important;
-          padding-top:0 !important;
-          padding-right:0 !important;
-          padding-bottom:20px !important;
-          padding-left:0 !important;
+        /* .navbar{
+            
+            
         }
+        .company{
 
-        td[class=content_cell] img{
-          height:auto !important;
-          max-width:480px !important;
         }
+        .products{
 
-        td[class=content_cell] img[class=onehundred_percent_width]{
-          width:100% !important;
         }
+        .customer_review{
 
-        td[class=full_width] {
-          display:block !important;
-          width:100% !important;
         }
+        .footer{
 
-        td[class="force_full_width"] {
-          display:none !important;
+        } */
+        .borderandshadow {
+            border: transparent;
+            border-radius: 12px;
+            box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.466);
         }
+        
+.input {
+    background: transparent;
+  backdrop-filter: saturate(180%) blur(10px);
+  font-size: 12px;
+  height: 30px;
+  padding: 4px 8px;
+  text-align: center;
+  position: absolute;
+  width: 50%;
+  border: 1px solid rgba(65, 65, 65, 0.648);
+}
 
+.input:focus {
+  outline: none;
+}
 
+.button {
+  text-align: center;
+}
 
-        table[class="mobile_table_width"] {
-          width:100% !important;
-        }
+.button:focus {
+  outline: none;
+}
 
+.button.btn-search,
+.button.btn-reset {
+  background: #6366f1;
+  border: none;
+  height: 30px;
+  font-size: 12px;
+  padding: 4px;
+  position: absolute;
+  width: 30px;
+}
 
-        #hero .hero_heading {
-          padding-top: 60px!important;
-        }
+.sample {
+  float: left;
+  height: 50px;
+  margin: 0 -50%;
+  position: relative;
+  width: 100%;
+  margin-right: 50px;
+}
 
-        #hero .hero_heading h1 {
-          font-size: 24px!important;
-        }
+.sample.one input,
+.sample.two input {
+  border-radius: 15px;
+  right: 0;
+  transition: all 0.3s ease-in-out;
+  width: 50%;
+}
 
-        #hero .hero_body {
-          padding-left: 40px!important;
-          padding-right: 40px!important;
-        }
+.sample.one input:focus ~ button.btn-search,
+.sample.two input:focus ~ button.btn-search {
+  background: #6366f1;
+  color: #fff;
+}
 
-        #hero .hero_button {
-          padding-bottom: 70px!important;
-        }
+.sample.one input:focus ~ button.btn-reset,
+.sample.two input:focus ~ button.btn-reset {
+  right: -22px;
+}
 
+.sample.one button.btn-search,
+.sample.two button.btn-search {
+  background: #fff;
+  border-radius: 50%;
+  height: 26px;
+  right: 2px;
+  top: 2px;
+  transition: all 0.3s ease-in-out;
+  width: 26px;
+}
 
-
-        #greatest.greatest_heading {
-          padding-left: 30px!important;
-          padding-right: 30px!important;
-        }
-
-        #greatest.greatest_heading h1 {
-          font-size: 18px;
-          padding: 0;
-        }
-
-
-
-        #lifehacks .lifehacks_grid {
-          padding-top: 50px!important;
-        }
-
-        #lifehacks .lifehacks_title {
-          text-align: center!important;
-          padding-top: 0px!important;
-          padding-left: 0px!important;
-          padding-right: 0px!important;
-        }
-
-        #lifehacks .lifehacks_body {
-          text-align: center!important;
-          padding-bottom: 40px!important;
-          padding-left: 0px!important;
-          padding-right: 0px!important;
-        }
-
-        #lifehacks .lifehacks_leftright {
-          padding-left: 50px!important;
-          padding-right: 50px!important;
-        }
-
-
-
-        #hungry .hungry_body {
-          padding-left: 30px!important;
-          padding-right: 30px!important;
-        }
-
-      }
+.sample.one button.btn-reset,
+.sample.two button.btn-reset {
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  font-size: 10px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0;
+  right: 5px;
+  top: 5px;
+  width: 20px;
+  z-index: -1;
+}
     </style>
-  </head>
-  
-  <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0"
-  style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;height:100% !important;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;width:100% !important;background-color:#F0F1F2;">
-    <center>
-      <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%"
-      width="100%" id="pagewrap_table" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;height:100% !important;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;width:100% !important;background-color:#F0F1F2;">
-        <tr>
-          <td id="pagewrap_cell" align="center" valign="top" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;height:100% !important;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;width:100% !important;padding-top:40px;padding-right:20px;padding-bottom:30px;padding-left:20px;">
-            <table border="0" cellpadding="0" cellspacing="0" id="container_table" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;width:600px;">
-              <tr>
-                <td align="center" valign="top" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
-                  <table id="header_table" border="0" cellpadding="0" cellspacing="0" width="100%"
-                  style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;background-color:#F0F1F2;">
-                    <tr>
-                      <td class="header_cell" valign="top" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;text-align:left;padding-top:0;padding-right:0;padding-bottom:30px;padding-left:0;">
-                        <img border="0" src="/images/Optevo-Logo-Full-Color-RGB.svg-removebg-preview.png"
-                        height="26" width="150" alt="Foursquare City Guide" style="-ms-interpolation-mode:bicubic;border-width:0;height:auto;line-height:100%;outline-style:none;text-decoration:none;"
-                        />
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-              <tr>
-                <td align="center" valign="top" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
-                  <table id="content_table" border="0" cellpadding="0" cellspacing="0" width="100%"
-                  style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;background-color:#FFFFFF;">
-                    <!-- DO NOT REMOVE - THIS FORCES GMAIL ON ANDROID TO 100% -->
-                    <tr>
-                      <td class="force_full_width" valign="top" width="100%" style="min-width:600px;height:1px!important;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
-                        <img border="0" src="https://4sq-email-assets.s3.amazonaws.com/fs-welcome-update/images/space.png"
-                        width="600" height="1" alt="" style="height:1px!important;display:block;-ms-interpolation-mode:bicubic;border-width:0;line-height:100%!important;outline-style:none;text-decoration:none;"
-                        />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td id="hero" class="content_cell" style="background-image: url('/images/Optevo-Background-p-1080.png'); scale: 1; color: #000; "
-                      bgcolor="#153bb5" valign="top" width="600" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;background-color:#153bb5;background-image:url('https://4sq-email-assets.s3.amazonaws.com/fs-welcome-update/images/hero-bg.jpg');background-repeat:no-repeat;background-position:top center;">
-                        <!--[if gte mso 9]>
-                          <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;">
-                            <v:fill type="tile" src="https://4sq-email-assets.s3.amazonaws.com/fs-welcome-update/images/hero-bg.jpg"
-                            color="#153bb5" />
-                            <v:textbox inset="0,0,0,0" style="mso-fit-shape-to-text:true;">
-                            <![endif]-->
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                              <tr>
-                                <td valign="middle" class="content_cell hero_heading" style="padding-top:150px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-bottom:0;padding-left:30px;padding-right:30px;">
-                                  <center>
-                                    <h1 style="color:#000;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-style:normal;font-weight:300;line-height:120%!important;letter-spacing:normal;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;font-size:30px!important;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;">Welcome to Optevo, Ian!</h1>
-                                  </center>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td valign="middle" class="content_cell hero_body" style="padding-top:20px;padding-bottom:40px;padding-left:70px;padding-right:70px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;color:#000;">
-                                  <center>Optevo enables you to organize everything that matters to you, including your people, projects, tasks, files and more, enabling you to focus on getting things done.</center>
-                                </td>
-                              </tr>
-                            </table>
-                            <!--[if gte mso 9]>
-                            </v:textbox>
-                          </v:rect>
-                        <![endif]-->
-                      </td>
-                    </tr>
-                    <tr>
-                      <td id="greatest" class="content_cell greatest_heading" style="padding-top:35px;padding-bottom:35px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-right:0;padding-left:0;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#eee;">
-                        <center>
-                          <h1 style="color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-style:normal;font-weight:300;line-height:120%!important;letter-spacing:normal;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;font-size:18px!important;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;">Named one of the "<span style="color:#fb4878;" >World’s Greatest Apps</span>" by Business Insider</h1>
-                        </center>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td id="content_wrap" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
-                        <table border="0" cellpadding="0" cellspacing="0" width="100%" id="lifehacks"
-                        style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                          <!-- 01 -->
-                          <tr>
-                            <td class="content_cell lifehacks_grid" style="padding-top:50px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-bottom:0;padding-right:0;padding-left:0;">
-                              <table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                <tr>
-                                  <td class="content_cell lifehacks_wrap" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#eeeeee;">
-                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                      <tr>
-                                        <td class="content_cell lifehacks_leftright" style="padding-left:75px;padding-right:60px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-top:0;padding-bottom:0;">
-                                          <table class="mobile_table_width" width="265" align="left" border="0" cellpadding="0"
-                                          cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                            <tr>
-                                              <td class="content_cell lifehacks_title" style="padding-top:5px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-bottom:0;padding-right:0;padding-left:0;">
-                                                <h1 style="color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-style:normal;font-weight:300;line-height:120%!important;letter-spacing:normal;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;font-size:22px!important;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;"><a href="https://foursquare.com/go/app_redirect?desktopWebPath=%2F&amp;amp;androidPath=%2Fvenues%2Fexplore&amp;amp;iosPath=%2Fsearch&amp;amp;windowsPath=%2Fvenues%2Fexplore&amp;click=cmVmPWVvLXdlbGNvbWVFbWFpbF9maXJzdF93ZWVrMzRfMjAxOC01YjdmMDc5YTY3ZjYyYjAwMzU3MDExNWUtNTA1NTU1MDcxJmxpbms9d2VsY29tZTFMaW5rMQ%3D%3D" style="color:#4e595d;text-decoration:none!important;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;" >Search for and discover great places nearby</a></h1>
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td class="content_cell lifehacks_body" style="padding-top:16px;padding-right:40px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-bottom:0;padding-left:0;">Whether you are traveling in a new city or in your own backyard, we’ll help you
-                                                find the best restaurants, coffee, nightlife, shops, or whatever you are in the
-                                                mood for.</td>
-                                            </tr>
-                                          </table>
-                                          <!--[if mso]>
-                                        </td>
-                                        <td style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
-                                        <![endif]-->
-                                        <table class="mobile_table_width" width="180" align="right" border="0" cellpadding="0"
-                                        cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                          <tr>
-                                            <td valign="bottom" class="content_cell lifehacks_image" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;">
-                                              <center>
-                                                <a href="https://foursquare.com/go/app_redirect?desktopWebPath=%2F&amp;amp;androidPath=%2Fvenues%2Fexplore&amp;amp;iosPath=%2Fsearch&amp;amp;windowsPath=%2Fvenues%2Fexplore&amp;click=cmVmPWVvLXdlbGNvbWVFbWFpbF9maXJzdF93ZWVrMzRfMjAxOC01YjdmMDc5YTY3ZjYyYjAwMzU3MDExNWUtNTA1NTU1MDcxJmxpbms9d2VsY29tZTFMaW5rMg%3D%3D"
-                                                style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#2D5BE3;text-decoration:underline;">
-                                                  <img src="/images/device-01.JPG"
-                                                  width="180" height="229" alt="" border="0" style="display:block!important;-ms-interpolation-mode:bicubic;border-width:0;line-height:100%!important;outline-style:none;text-decoration:none;height:auto;max-width:600px;"
-                                                  />
-                                                </a>
-                                              </center>
-                                            </td>
-                                          </tr>
-                                        </table>
-                                        </td>
-                                      </tr>
-                                    </table>
-                                  </td>
-                                </tr>
-                              </table>
-                            </td>
-                          </tr>
-                          <!-- 02 -->
-                          <tr>
-                            <td class="content_cell lifehacks_grid" style="padding-top:50px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-bottom:0;padding-right:0;padding-left:0;">
-                              <table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                <tr>
-                                  <td class="content_cell lifehacks_wrap" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#eeeeee;">
-                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                      <tr>
-                                        <td class="content_cell lifehacks_leftright" style="padding-left:60px;padding-right:40px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-top:0;padding-bottom:0;">
-                                          <table class="mobile_table_width" width="265" align="right" border="0" cellpadding="0"
-                                          cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                            <tr>
-                                              <td class="content_cell lifehacks_title" style="padding-top:5px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-bottom:0;padding-right:0;padding-left:0;">
-                                                <h1 style="color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-style:normal;font-weight:300;line-height:120%!important;letter-spacing:normal;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;font-size:22px!important;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;"><a href="https://foursquare.com/go/app_redirect?desktopWebPath=%2F&amp;amp;androidPath=%2Flists&amp;amp;iosPath=%2Flists&amp;amp;windowsPath=%2F&amp;click=cmVmPWVvLXdlbGNvbWVFbWFpbF9maXJzdF93ZWVrMzRfMjAxOC01YjdmMDc5YTY3ZjYyYjAwMzU3MDExNWUtNTA1NTU1MDcxJmxpbms9d2VsY29tZTFMaW5rMw%3D%3D" style="color:#4e595d;text-decoration:none!important;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;" >Plan trips, save your favorites, start a bucket list</a></h1>
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td class="content_cell lifehacks_body" style="padding-top:16px;padding-right:30px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-bottom:0;padding-left:0;">Lists are the easiest way to create a to-do list that’s easily accessible on the
-                                                go. Aggregate all your travel recs, remember everywhere you’ve been dying to go
-                                                and share with friends.</td>
-                                            </tr>
-                                          </table>
-                                          <!--[if mso]>
-                                        </td>
-                                        <td style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
-                                        <![endif]-->
-                                        <table class="mobile_table_width" width="180" align="left" border="0" cellpadding="0"
-                                        cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                          <tr>
-                                            <td valign="bottom" class="content_cell lifehacks_image" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;">
-                                              <center>
-                                                <a href="https://foursquare.com/go/app_redirect?desktopWebPath=%2F&amp;amp;androidPath=%2Flists&amp;amp;iosPath=%2Flists&amp;amp;windowsPath=%2F&amp;click=cmVmPWVvLXdlbGNvbWVFbWFpbF9maXJzdF93ZWVrMzRfMjAxOC01YjdmMDc5YTY3ZjYyYjAwMzU3MDExNWUtNTA1NTU1MDcxJmxpbms9d2VsY29tZTFMaW5rNA%3D%3D"
-                                                style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#2D5BE3;text-decoration:underline;">
-                                                  <img src="/images/device-02.jpg"
-                                                  width="180" height="229" alt="" border="0" style="display:block!important;-ms-interpolation-mode:bicubic;border-width:0;line-height:100%!important;outline-style:none;text-decoration:none;height:auto;max-width:600px;"
-                                                  />
-                                                </a>
-                                              </center>
-                                            </td>
-                                          </tr>
-                                        </table>
-                                        </td>
-                                      </tr>
-                                    </table>
-                                  </td>
-                                </tr>
-                              </table>
-                            </td>
-                          </tr>
-                          <!-- 03 -->
-                          <tr>
-                            <td class="content_cell lifehacks_grid" style="padding-top:50px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-bottom:0;padding-right:0;padding-left:0;">
-                              <table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                <tr>
-                                  <td class="content_cell lifehacks_wrap" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#eeeeee;">
-                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                      <tr>
-                                        <td class="content_cell lifehacks_leftright" style="padding-left:75px;padding-right:60px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-top:0;padding-bottom:0;">
-                                          <table class="mobile_table_width" width="265" align="left" border="0" cellpadding="0"
-                                          cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                            <tr>
-                                              <td class="content_cell lifehacks_title" style="padding-top:5px;padding-right:30px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-bottom:0;padding-left:0;">
-                                                <h1 style="color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-style:normal;font-weight:300;line-height:120%!important;letter-spacing:normal;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;font-size:22px!important;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;"><a href="https://foursquare.com/go/app_redirect?desktopWebPath=%2F&amp;amp;androidPath=%2Fhistory&amp;amp;iosPath=%2Fhistory&amp;amp;windowsPath=%2F&amp;click=cmVmPWVvLXdlbGNvbWVFbWFpbF9maXJzdF93ZWVrMzRfMjAxOC01YjdmMDc5YTY3ZjYyYjAwMzU3MDExNWUtNTA1NTU1MDcxJmxpbms9d2VsY29tZTFMaW5rNQ%3D%3D" style="color:#4e595d;text-decoration:none!important;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;" >Keep track of places you’ve been</a></h1>
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td class="content_cell lifehacks_body" style="padding-top:16px;padding-right:30px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-bottom:0;padding-left:0;">Never forget that awesome place you went; quickly reference your history tab.
-                                                Be sure to rate the places you go, so we can give you better recommendations in
-                                                the future.</td>
-                                            </tr>
-                                          </table>
-                                          <!--[if mso]>
-                                        </td>
-                                        <td style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
-                                        <![endif]-->
-                                        <table class="mobile_table_width" width="180" align="right" border="0" cellpadding="0"
-                                        cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                          <tr>
-                                            <td valign="bottom" class="content_cell lifehacks_image" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;">
-                                              <center>
-                                                <a href="https://foursquare.com/go/app_redirect?desktopWebPath=%2F&amp;amp;androidPath=%2Fhistory&amp;amp;iosPath=%2Fhistory&amp;amp;windowsPath=%2F&amp;click=cmVmPWVvLXdlbGNvbWVFbWFpbF9maXJzdF93ZWVrMzRfMjAxOC01YjdmMDc5YTY3ZjYyYjAwMzU3MDExNWUtNTA1NTU1MDcxJmxpbms9d2VsY29tZTFMaW5rNg%3D%3D"
-                                                style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#2D5BE3;text-decoration:underline;">
-                                                  <img src="/images/device-03.jpg"
-                                                  width="180" height="229" alt="" border="0" style="display:block!important;-ms-interpolation-mode:bicubic;border-width:0;line-height:100%!important;outline-style:none;text-decoration:none;height:auto;max-width:600px;"
-                                                  />
-                                                </a>
-                                              </center>
-                                            </td>
-                                          </tr>
-                                        </table>
-                                        </td>
-                                      </tr>
-                                    </table>
-                                  </td>
-                                </tr>
-                              </table>
-                            </td>
-                          </tr>
-                          <!-- 04 -->
-                          <tr>
-                            <td class="content_cell lifehacks_grid" style="padding-top:50px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-bottom:0;padding-right:0;padding-left:0;">
-                              <table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                <tr>
-                                  <td class="content_cell lifehacks_wrap" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#eeeeee;">
-                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                      <tr>
-                                        <td class="content_cell lifehacks_leftright" style="padding-left:60px;padding-right:40px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-top:0;padding-bottom:0;">
-                                          <table class="mobile_table_width" width="265" align="right" border="0" cellpadding="0"
-                                          cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                            <tr>
-                                              <td class="content_cell lifehacks_title" style="padding-top:15px;padding-right:80px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-bottom:0;padding-left:0;">
-                                                <h1 style="color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-style:normal;font-weight:300;line-height:120%!important;letter-spacing:normal;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;font-size:22px!important;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;"><a href="https://foursquare.com/go/app_redirect?iosPath=%2F&amp;amp;androidPath=%2F&amp;amp;windowsPath=%2F&amp;amp;desktopWebPath=%2F&amp;click=cmVmPWVvLXdlbGNvbWVFbWFpbF9maXJzdF93ZWVrMzRfMjAxOC01YjdmMDc5YTY3ZjYyYjAwMzU3MDExNWUtNTA1NTU1MDcxJmxpbms9d2VsY29tZTFMaW5rNw%3D%3D" style="color:#4e595d;text-decoration:none!important;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;" >Read tips from local experts</a></h1>
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td class="content_cell lifehacks_body" style="padding-top:16px;padding-right:40px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-bottom:0;padding-left:0;">Scour millions of insider tips so you never miss out on the best thing to order
-                                                or experience. Pay it forward by leaving your own!</td>
-                                            </tr>
-                                          </table>
-                                          <!--[if mso]>
-                                        </td>
-                                        <td style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
-                                        <![endif]-->
-                                        <table class="mobile_table_width" width="180" align="left" border="0" cellpadding="0"
-                                        cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                          <tr>
-                                            <td valign="bottom" class="content_cell lifehacks_image" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;">
-                                              <center>
-                                                <a href="https://foursquare.com/go/app_redirect?iosPath=%2F&amp;amp;androidPath=%2F&amp;amp;windowsPath=%2F&amp;amp;desktopWebPath=%2F&amp;click=cmVmPWVvLXdlbGNvbWVFbWFpbF9maXJzdF93ZWVrMzRfMjAxOC01YjdmMDc5YTY3ZjYyYjAwMzU3MDExNWUtNTA1NTU1MDcxJmxpbms9d2VsY29tZTFMaW5rOA%3D%3D"
-                                                style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#2D5BE3;text-decoration:underline;">
-                                                  <img src="/images/device-04.jpg"
-                                                  width="180" height="229" alt="" border="0" style="display:block!important;-ms-interpolation-mode:bicubic;border-width:0;line-height:100%!important;outline-style:none;text-decoration:none;height:auto;max-width:600px;"
-                                                  />
-                                                </a>
-                                              </center>
-                                            </td>
-                                          </tr>
-                                        </table>
-                                        </td>
-                                      </tr>
-                                    </table>
-                                  </td>
-                                </tr>
-                              </table>
-                            </td>
-                          </tr>
-                          <!-- -->
-                        </table>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="content_cell" style="padding-top:45px;padding-bottom:25px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-right:0;padding-left:0;">
-                        <center>
-                          <table cellspacing="0" cellpadding="0" align="center" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                            <tr>
-                              <td align="center" height="35" bgcolor="#2c56e8" style="padding-top:2px;padding-bottom:0px;padding-right:20px;padding-left:20px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;color:#ffffff;display:block;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
-                                <a href="https://foursquare.com/go/app_redirect?desktopWebPath=%2F&amp;amp;androidPath=%2Fvenues%2Fexplore&amp;amp;iosPath=%2Fsearch&amp;amp;windowsPath=%2Fvenues%2Fexplore&amp;click=cmVmPWVvLXdlbGNvbWVFbWFpbF9maXJzdF93ZWVrMzRfMjAxOC01YjdmMDc5YTY3ZjYyYjAwMzU3MDExNWUtNTA1NTU1MDcxJmxpbms9d2VsY29tZTFMaW5rOQ%3D%3D"
-                                style="font-size:14px!important;font-weight:500;font-family:Helvetica, Arial, sans-serif;text-decoration:none;line-height:35px!important;width:100%;display:inline-block;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#2D5BE3;"><span style="color:#ffffff;text-decoration:none;">Start searching now</span>
-                                </a>
-                              </td>
-                            </tr>
-                          </table>
-                        </center>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="padding-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
-                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                          <tr>
-                            <td id="hungry" class="content_cell" background="https://4sq-email-assets.s3.amazonaws.com/fs-welcome-update/images/hungry-bg.jpg"
-                            bgcolor="#464f51" valign="top" width="600" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;background-color:#464f51;background-image:url('https://4sq-email-assets.s3.amazonaws.com/fs-welcome-update/images/hungry-bg.jpg');background-repeat:no-repeat;background-position:top center;">
-                              <!--[if gte mso 9]>
-                                <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;">
-                                  <v:fill type="tile" src="https://4sq-email-assets.s3.amazonaws.com/fs-welcome-update/images/hungry-bg.jpg"
-                                  color="#464f51" />
-                                  <v:textbox inset="0,0,0,0" style="mso-fit-shape-to-text:true;">
-                                  <![endif]-->
-                                  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                                    <tr>
-                                      <td valign="middle" class="content_cell hungry_body" style="padding-top:20px;padding-bottom:20px;padding-left:70px;padding-right:70px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px!important;line-height:150%!important;text-align:left;color:#fff;">
-                                        <center><i>Foursquare is proud to support No Kid Hungry®. Together, let’s end childhood hunger in the U.S. Search #NoKidHungry in app for participating restaurants.<a href="https://medium.com/foursquare-direct/together-we-re-feeding-the-next-generation-a486a35d085c#.ahxekql2n" style="text-decoration:underline;color:#ffffff;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;" ><strong>Click here</strong></a> to learn more.</i>
-                                        </center>
-                                      </td>
-                                    </tr>
-                                  </table>
-                                  <!--[if gte mso 9]>
-                                  </v:textbox>
-                                </v:rect>
-                              <![endif]-->
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="2" class="content_cell" valign="top" width="100%" style="line-height:15px;background-color:#F0F1F2;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;">&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2" background="https://playfoursquare.s3.amazonaws.com/emails/blasts/week_2/callout_bg.jpg"
-                      bgcolor="#F94877" width="600" valign="top" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
-                        <!--[if gte mso 9]>
-                          <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;">
-                            <v:fill type="tile" src="https://playfoursquare.s3.amazonaws.com/emails/blasts/week_2/callout_bg.jpg"
-                            color="#F94877" />
-                            <v:textbox inset="0,0,0,0" style="mso-fit-shape-to-text:true;">
-                            <![endif]-->
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;">
-                              <tr>
-                                <td class="content_cell" valign="top" width="40" style="padding-bottom:15px;padding-left:40px;padding-right:20px;padding-top:25px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px;line-height:150%;">
-                                  <a href="https://foursquare.com/go/app_redirect?iosPath=%2F&amp;androidPath=%2F&amp;windowsPath=%2F&amp;desktopWebPath=%2Fget&amp;click=cmVmPWVvLXdlbGNvbWVFbWFpbF9maXJzdF93ZWVrMzRfMjAxOC01YjdmMDc5YTY3ZjYyYjAwMzU3MDExNWUtNTA1NTU1MDcxJmxpbms9YmFubmVyMUFwcEljb25MaW5r"
-                                  style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#2D5BE3;text-decoration:underline;">
-                                    <img border="0" src="https://playfoursquare.s3.amazonaws.com/emails/blasts/foursquare/app/icon/welcomeseries.png"
-                                    width="62" height="62" alt="Foursquare icon" style="-ms-interpolation-mode:bicubic;border-width:0;line-height:100%;outline-style:none;text-decoration:none;height:auto;max-width:600px;"
-                                    />
-                                  </a>
-                                </td>
-                                <td class="content_cell" valign="top" width="100%" style="padding-right:40px;padding-top:30px;color:#FBD2DC;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px;line-height:150%;padding-bottom:0;padding-left:0;">
-                                  <h2 style="color:#ffffff;padding-bottom:10px;display:block;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:22px;font-style:normal;font-weight:300;line-height:120%;letter-spacing:normal;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;padding-top:0;padding-right:0;padding-left:0;">Take Foursquare City Guide with you on the go</h2>Get the app and never miss out on your personalized recommendations while out
-                                  and about.
-                                  <br/>
-                                  <br/>
-                                  <a href="https://foursquare.com/go/app_redirect?iosPath=%2F&amp;androidPath=%2F&amp;windowsPath=%2F&amp;desktopWebPath=%2Fget&amp;click=cmVmPWVvLXdlbGNvbWVFbWFpbF9maXJzdF93ZWVrMzRfMjAxOC01YjdmMDc5YTY3ZjYyYjAwMzU3MDExNWUtNTA1NTU1MDcxJmxpbms9YmFubmVyMURvd25sb2FkTGluaw%3D%3D"
-                                  style="background:#FFFFFF;color:#F94877;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;display:inline-block;font-weight:500;font-size:14px;margin:0 auto;padding:7px 20px;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;text-decoration: none;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#EB4D5C;">Download now</a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="content_cell" valign="top" width="40" style="line-height:25px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#4E595D;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:14px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;">&nbsp;</td>
-                              </tr>
-                            </table>
-                            <!--[if gte mso 9]>
-                            </v:textbox>
-                          </v:rect>
-                        <![endif]-->
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-              <tr>
-                <td align="center" valign="top" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;">
-                  <table id="footer_table" border="0" cellpadding="0" cellspacing="0" width="100%"
-                  style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;background-color:#F0F1F2;">
-                    <tr>
-                      <td class="footer_cell" valign="top" width="100%" height="30" style="padding-top:0;line-height:30px;font-size:30px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#959B9E;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;padding-right:0;padding-bottom:0;padding-left:0;text-align:center;">&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td class="footer_cell" valign="top" width="100%" style="background-color:#ffffff;padding-top:20px;padding-bottom:5px;color:#4E595D;font-size:14px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;line-height:150%;padding-right:0;padding-left:0;text-align:center;">Don't have the Foursquare City Guide app? Get it for your phone:</td>
-                    </tr>
-                    <tr>
-                      <td class="footer_cell" valign="top" width="100%" style="background-color:#ffffff;padding-top:5px;padding-bottom:10px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#959B9E;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:10px;line-height:150%;padding-right:0;padding-left:0;text-align:center;">
-                        <center>&nbsp;&nbsp;&nbsp;
-                          <a href="https://foursquare.com/get?appsflyerId=|4sq|e,welcomeEmail_first_week34_2018,,footerLink,|userId,505555071|referralId,5b7f079a67f62b003570115e|&amp;os=iphone"
-                          style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#959B9E;text-decoration:underline;">
-                            <img border="0" src="https://playfoursquare.s3.amazonaws.com/emails/blasts/badge-ios@2x.png"
-                            width="123" height="35" alt="Download on the App Store" style="-ms-interpolation-mode:bicubic;border-width:0;height:auto;line-height:100%;outline-style:none;text-decoration:none;"
-                            />
-                          </a>&nbsp;&nbsp;&nbsp;
-                          <a href="https://foursquare.com/get?appsflyerId=|4sq|e,welcomeEmail_first_week34_2018,,footerLink,|userId,505555071|referralId,5b7f079a67f62b003570115e|&amp;os=android"
-                          style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#959B9E;text-decoration:underline;">
-                            <img border="0" src="https://playfoursquare.s3.amazonaws.com/emails/blasts/badge-android@2x.png"
-                            width="123" height="35" alt="Get it on Google Play" style="-ms-interpolation-mode:bicubic;border-width:0;height:auto;line-height:100%;outline-style:none;text-decoration:none;"
-                            />
-                          </a>&nbsp;&nbsp;&nbsp;</center>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="footer_cell" valign="top" width="100%" height="1" style="padding-top:0;line-height:1px;font-size:1px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#959B9E;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;padding-right:0;padding-bottom:0;padding-left:0;text-align:center;">&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td class="footer_cell" valign="top" width="100%" style="background-color:#ffffff;padding-top:12px;padding-right:40px;padding-bottom:12px;padding-left:40px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#959B9E;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:10px;line-height:150%;text-align:center;">Never miss out on exciting news, product updates, and special announcements.
-                        <br>
-                        <a href="mailto:noreply@foursquare.com" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#959B9E;text-decoration:underline">Add us to your address book</a>so your emails don't get stuck in inbox limbo.</td>
-                    </tr>
-                    <tr>
-                      <td class="footer_cell" valign="top" width="100%" style="padding-top:25px;padding-right:40px;padding-bottom:5px;padding-left:40px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#959B9E;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:10px;line-height:150%;text-align:center;">
-                        <a href="https://foursquare.com/p/staff-picks/86922724" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#959B9E;text-decoration:underline;">
-                          <img border="0" src="https://playfoursquare.s3.amazonaws.com/emails/blasts/chrome/icon_foursquare@2x.png"
-                          width="29" height="25" alt="Foursquare" style="-ms-interpolation-mode:bicubic;border-width:0;height:auto;line-height:100%;outline-style:none;text-decoration:none;"
-                          />
+</head>
+
+<body>
+    <!-- navbar -->
+    <!-- company's amazing logo and a punchline along with a button || company's logo on hover convert to a description of the company -->
+    <!-- products with an elegant filter button-->
+    <!-- customer review / testiony section -->
+    <!-- standard footer -->
+
+    <!-- <div class="navbar">navbar</div>
+    <div class="company">company logo</div>
+    <div class="products">products</div>
+    <div class="customer_review">customer review</div>
+    <div class="footer">footer</div>
+    -->
+
+    <!-- navbar and company logo and button STARTED -->
+    <div class="bg-white mb-40" style="height: 100vh;">
+        <header class="absolute inset-x-0 top-0 z-50">
+            <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+                <div class="flex lg:flex-1">
+                    <a href="#" class="-m-1.5 p-1.5">
+                        <span class="sr-only">Your Company</span>
+                        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                            alt="">
+                    </a>
+                </div>
+                <div class="flex lg:hidden">
+                    <button type="button"
+                        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="hidden lg:flex lg:gap-x-12">
+                    <a href="#products" class="text-sm font-semibold leading-6 text-gray-900">Products</a>
+                    <a href="#writeareview" class="text-sm font-semibold leading-6 text-gray-900">Write a review</a>
+                    <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Agencies</a>
+                    <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Apply for listing</a>
+                </div>
+                <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                    <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span
+                            aria-hidden="true">&rarr;</span></a>
+                </div>
+            </nav>
+            <!-- Mobile menu, show/hide based on menu open state. -->
+            <div class="lg:hidden" role="dialog" aria-modal="true">
+                <!-- Background backdrop, show/hide based on slide-over state. -->
+                <div class="fixed inset-0 z-50"></div>
+                <div
+                    class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                    <div class="flex items-center justify-between">
+                        <a href="#" class="-m-1.5 p-1.5">
+                            <span class="sr-only">Your Company</span>
+                            <img class="h-8 w-auto"
+                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
                         </a>
-                        <a href="https://twitter.com/foursquareguide" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#959B9E;text-decoration:underline;">
-                          <img border="0" src="https://playfoursquare.s3.amazonaws.com/emails/blasts/chrome/icon_twitter@2x.png"
-                          width="39" height="25" alt="Twitter" style="-ms-interpolation-mode:bicubic;border-width:0;height:auto;line-height:100%;outline-style:none;text-decoration:none;"
-                          />
-                        </a>
-                        <a href="https://www.facebook.com/foursquare" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#959B9E;text-decoration:underline;">
-                          <img border="0" src="https://playfoursquare.s3.amazonaws.com/emails/blasts/chrome/icon_facebook@2x.png"
-                          width="34" height="25" alt="Facebook" style="-ms-interpolation-mode:bicubic;border-width:0;height:auto;line-height:100%;outline-style:none;text-decoration:none;"
-                          />
-                        </a>
-                        <a href="https://instagram.com/foursquare/" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#959B9E;text-decoration:underline;">
-                          <img border="0" src="https://playfoursquare.s3.amazonaws.com/emails/blasts/chrome/icon_instagram@2x.png"
-                          width="34" height="25" alt="Instagram" style="-ms-interpolation-mode:bicubic;border-width:0;height:auto;line-height:100%;outline-style:none;text-decoration:none;"
-                          />
-                        </a>
-                        <a href="https://www.pinterest.com/foursquare/" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#959B9E;text-decoration:underline;">
-                          <img border="0" src="https://playfoursquare.s3.amazonaws.com/emails/blasts/chrome/icon_pinterest@2x.png"
-                          width="34" height="25" alt="Pinterest" style="-ms-interpolation-mode:bicubic;border-width:0;height:auto;line-height:100%;outline-style:none;text-decoration:none;"
-                          />
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="footer_cell" valign="top" width="100%" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;color:#959B9E;font-family:'Helvetica Neue',Helvetica,Verdana,Arial,sans-serif;font-size:10px;line-height:150%;padding-top:10px;padding-right:0;padding-bottom:0;padding-left:0;text-align:center;">This message was sent to
-                        <a style="color: #959B9E; text-decoration: underline;"
-                        href="#">andrewcking84@gmail.com</a>. Please remember you can always go to your
-                        <a href="/login?continue=%2Fsettings%2Fnotifications"
-                        style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#959B9E;text-decoration:underline">User&nbsp;Settings</a>page to adjust your account and contact info, privacy controls,
-                        email preferences and options linking to Twitter and Facebook.&nbsp;To opt out
-                        of these emails,&nbsp;
-                        <a href="https://foursquare.com/email_unsubscribe?messageType=keep_in_the_know&amp;ref=eo-welcomeEmail_first_week34_2018-5b7f079a67f62b003570115e&amp;ts=1535051674100&amp;userId=505555071&amp;sig=gI2RD2SLvp388m3U3bDJs3Wkkv8%3D"
-                        style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#959B9E;text-decoration:underline">click here</a>.&nbsp;Foursquare Labs, Inc., 50 W 23rd St, NY, NY 10010 -
-                        <a href="https://foursquare.com"
-                        style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#959B9E;text-decoration:underline">www.foursquare.com</a>
-                        <img src="https://foursquare.com/4sq.pixel.png?id=eo-welcomeEmail_first_week34_2018-5b7f079a67f62b003570115e-505555071&amp;t=e&amp;sig=OHvthzzBXCDWTCpO3lVpZoEd%2FQc%3D"
-                        height="1" width="1" />
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </center>
-    <img src="https://emailclick.foursquare.com/wf/open?upn=O7ROD4svS-2BWtZVG4Rcp0QgOlc1DlFZKP6RGX1xrRQusj6VupMNvAI5WTGkWunvMALBX6I0XxX9rAcukRw4RKDgV-2FJJOiuQd9WYSVfkajKPPkPdt2R0Q4gJ1z9QXnQy39MioQ7VVWkO3MmaHEOpMPr7xrrw4v1uMPlCFv3NLnOG-2F972hcKUMVjhGBihhEpCZOuODpdtcb3Ke43WQnJeN-2Fks1C8TdVn1mCJggBA2axv6nhEM4WyUKWmIN0ciYq78atI-2FFWBGP-2B2dnhn-2BkHQZM5tGk2LVrNZkCJIcu8WzMblEEPfzlZza1nyzvPXBeH0oQMGm-2FGp3D7ly9RQiN-2BoNs-2Bg3dPlBLYRiqvOvQSJg5JK-2BQCdPTEqY3PYUkoxz3pqpQH"
-    alt="" width="1" height="1" border="0" style="height:1px !important;width:1px !important;border-width:0 !important;margin-top:0 !important;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !important;padding-top:0 !important;padding-bottom:0 !important;padding-right:0 !important;padding-left:0 !important;"
-    />
-  </body>
+                        <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                            <span class="sr-only">Close menu</span>
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="mt-6 flow-root">
+                        <div class="-my-6 divide-y divide-gray-500/10">
+                            <div class="space-y-2 py-6">
+                                <a href="#"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Product</a>
+                                <a href="#"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
+                                <a href="#"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Marketplace</a>
+                                <a href="#"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</a>
+                            </div>
+                            <div class="py-6">
+                                <a href="#"
+                                    class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log
+                                    in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="relative isolate px-6 pt-14 lg:px-8">
+            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+                aria-hidden="true">
+                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
+            </div>
+            <div class="mx-auto max-w-2xl py-32 md:py-25 lg:py-25 2xl:py-56">
+                <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+                    <div class="sample one">
+                        <input class="input" type="text" name="search" placeholder="search">
+                        <button  type="submit" class="button btn btn-search fa fa-search"></button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Data to enrich your online
+                        business</h1>
+                    <p class="mt-6 text-lg leading-8 text-gray-600">Anim aute id magna aliqua ad ad non deserunt sunt.
+                        Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>
+                    <div class="mt-10 flex items-center justify-center gap-x-6">
+                        <a href="#"
+                            class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
+                            started</a>
+                        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Learn more <span
+                                aria-hidden="true">→</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+                aria-hidden="true">
+                <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- navbar and company logo and button ENDED -->
+    <!-- products with an elegant filter button STARTED -->
+    <center id="products" class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl hover:underline">
+        Our Products</center>
+    <div class="bg-white mx-4 ">
+        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+            <h2 class="sr-only">Products</h2>
+
+            <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                <a href="#" class="group">
+                    <div
+                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                        <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
+                            alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+                            class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    </div>
+                    <h3 class="mt-4 text-sm text-gray-700">Earthen Bottle</h3>
+                    <p class="mt-1 text-lg font-medium text-gray-900">$48</p>
+                </a>
+                <a href="#" class="group">
+                    <div
+                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                        <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg"
+                            alt="Olive drab green insulated bottle with flared screw lid and flat top."
+                            class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    </div>
+                    <h3 class="mt-4 text-sm text-gray-700">Nomad Tumbler</h3>
+                    <p class="mt-1 text-lg font-medium text-gray-900">$35</p>
+                </a>
+                <a href="#" class="group">
+                    <div
+                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                        <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg"
+                            alt="Person using a pen to cross a task off a productivity paper card."
+                            class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    </div>
+                    <h3 class="mt-4 text-sm text-gray-700">Focus Paper Refill</h3>
+                    <p class="mt-1 text-lg font-medium text-gray-900">$89</p>
+                </a>
+                <a href="#" class="group">
+                    <div
+                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                        <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg"
+                            alt="Hand holding black machined steel mechanical pencil with brass tip and top."
+                            class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    </div>
+                    <h3 class="mt-4 text-sm text-gray-700">Machined Mechanical Pencil</h3>
+                    <p class="mt-1 text-lg font-medium text-gray-900">$35</p>
+                </a>
+                <a href="#" class="group">
+                    <div
+                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                        <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
+                            alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+                            class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    </div>
+                    <h3 class="mt-4 text-sm text-gray-700">Earthen Bottle</h3>
+                    <p class="mt-1 text-lg font-medium text-gray-900">$48</p>
+                </a>
+                <a href="#" class="group">
+                    <div
+                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                        <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg"
+                            alt="Olive drab green insulated bottle with flared screw lid and flat top."
+                            class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    </div>
+                    <h3 class="mt-4 text-sm text-gray-700">Nomad Tumbler</h3>
+                    <p class="mt-1 text-lg font-medium text-gray-900">$35</p>
+                </a>
+                <a href="#" class="group">
+                    <div
+                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                        <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg"
+                            alt="Person using a pen to cross a task off a productivity paper card."
+                            class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    </div>
+                    <h3 class="mt-4 text-sm text-gray-700">Focus Paper Refill</h3>
+                    <p class="mt-1 text-lg font-medium text-gray-900">$89</p>
+                </a>
+                <a href="#" class="group">
+                    <div
+                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                        <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg"
+                            alt="Hand holding black machined steel mechanical pencil with brass tip and top."
+                            class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    </div>
+                    <h3 class="mt-4 text-sm text-gray-700">Machined Mechanical Pencil</h3>
+                    <p class="mt-1 text-lg font-medium text-gray-900">$35</p>
+                </a>
+
+            </div>
+        </div>
+    </div>
+        <!-- products with an elegant filter button ENDED -->
+
+    <!-- customer review / testiony section STARTED -->
+
+    <section class=" mx-4 my-40 px-10 py-10 borderandshadow">
+        <div class="row d-flex justify-content-center my-4">
+          <div class="col-md-10 col-xl-8 text-center">
+            <h3 class="mb-4 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl no-underline hover:underline
+            ">Reviews</h3>
+            <p class="mb-4 pb-2 mb-md-5 pb-md-0">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
+              numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
+              quisquam eum porro a pariatur veniam.
+            </p>
+          </div>
+        </div>
+      
+        <div class="row text-center">
+          <div class="col-md-4 mb-5 mb-md-0">
+            <div class="d-flex justify-content-center mb-4">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
+                class="rounded-circle shadow-1-strong" width="150" height="150" />
+            </div>
+            <h5 class="mb-3">Maria Smantha</h5>
+            <h6 class="text-primary mb-3">Web Developer</h6>
+            <p class="px-xl-3">
+              <i class="fas fa-quote-left pe-2"></i>Lorem ipsum dolor sit amet, consectetur
+              adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic
+              tenetur.
+            </p>
+            <ul class="list-unstyled d-flex justify-content-center mb-0">
+              <li>
+                <i class="fas fa-star fa-sm text-warning"></i>
+              </li>
+              <li>
+                <i class="fas fa-star fa-sm text-warning"></i>
+              </li>
+              <li>
+                <i class="fas fa-star fa-sm text-warning"></i>
+              </li>
+              <li>
+                <i class="fas fa-star fa-sm text-warning"></i>
+              </li>
+              <li>
+                <i class="fas fa-tasr-half-alt fa-sm text-warning"></i>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 mb-5 mb-md-0">
+            <div class="d-flex justify-content-center mb-4">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
+                class="rounded-circle shadow-1-strong" width="150" height="150" />
+            </div>
+            <h5 class="mb-3">Lisa Cudrow</h5>
+            <h6 class="text-primary mb-3">Graphic Designer</h6>
+            <p class="px-xl-3">
+              <i class="fas fa-quote-left pe-2"></i>Ut enim ad minima veniam, quis nostrum
+              exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid commodi.
+            </p>
+            <ul class="list-unstyled d-flex justify-content-center mb-0">
+              <li>
+                <i class="fas fa-star fa-sm text-warning"></i>
+              </li>
+              <li>
+                <i class="fas fa-star fa-sm text-warning"></i>
+              </li>
+              <li>
+                <i class="fas fa-star fa-sm text-warning"></i>
+              </li>
+              <li>
+                <i class="fas fa-star fa-sm text-warning"></i>
+              </li>
+              <li>
+                <i class="fas fa-star fa-sm text-warning"></i>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 mb-0">
+            <div class="d-flex justify-content-center mb-4">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp"
+                class="rounded-circle shadow-1-strong" width="150" height="150" />
+            </div>
+            <h5 class="mb-3">John Smith</h5>
+            <h6 class="text-primary mb-3">Marketing Specialist</h6>
+            <p class="px-xl-3">
+              <i class="fas fa-quote-left pe-2"></i>At vero eos et accusamus et iusto odio
+              dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.
+            </p>
+            <ul class="list-unstyled d-flex justify-content-center mb-0">
+              <li>
+                <i class="fas fa-star fa-sm text-warning"></i>
+              </li>
+              <li>
+                <i class="fas fa-star fa-sm text-warning"></i>
+              </li>
+              <li>
+                <i class="fas fa-star fa-sm text-warning"></i>
+              </li>
+              <li>
+                <i class="fas fa-star fa-sm text-warning"></i>
+              </li>
+              <li>
+                <i class="far fa-star fa-sm text-warning"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="writeareview" class="header no-underline pt-20 hover:underline ">WRITE A REVIEW</div>
+
+        <form id="form" class="topBefore">
+                
+                  <input class="input1" id="name" type="text" placeholder="NAME">
+                  <input class="input1" id="email" type="text" placeholder="E-MAIL">
+                  <textarea id="message" type="text" placeholder="MESSAGE"></textarea>
+          <input class="input1" id="submit" type="submit" value="GO!">
+          
+        </form>
+
+
+
+      </section>
+
+
+<!-- customer review / testiony section ENDED -->
+
+      <!-- footer STARTED -->
+      
+
+<footer class="new_footer_area bg_color">
+    <div class="new_footer_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                        <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
+                        <p>Don’t miss any updates of our new templates and extensions.!</p>
+                        <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
+                            <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
+                            <button class="btn btn_get btn_get_two" type="submit">Subscribe</button>
+                            <p class="mchimp-errmessage" style="display: none;"></p>
+                            <p class="mchimp-sucmessage" style="display: none;"></p>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+                        <h3 class="f-title f_600 t_color f_size_18">Download</h3>
+                        <ul class="list-unstyled f_list">
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Android App</a></li>
+                            <li><a href="#">ios App</a></li>
+                            <li><a href="#">Desktop</a></li>
+                            <li><a href="#">Projects</a></li>
+                            <li><a href="#">My tasks</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                        <h3 class="f-title f_600 t_color f_size_18">Help</h3>
+                        <ul class="list-unstyled f_list">
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Term &amp; conditions</a></li>
+                            <li><a href="#">Reporting</a></li>
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">Support Policy</a></li>
+                            <li><a href="#">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+                        <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
+                        <div class="f_social_icon">
+                            <a href="#" class="fab fa-facebook"></a>
+                            <a href="#" class="fab fa-twitter"></a>
+                            <a href="#" class="fab fa-linkedin"></a>
+                            <a href="#" class="fab fa-pinterest"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bg">
+            <div class="footer_bg_one"></div>
+            <div class="footer_bg_two"></div>
+        </div>
+    </div>
+    <div class="footer_bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- <div class="col-lg-6 col-sm-7">
+                    <p class="mb-0 f_400">© cakecounter Inc.. 2019 All rights reserved.</p>
+                </div> -->
+                <!-- <div class="col-lg-6 col-sm-5 text-right">
+                    <p>Made with <i class="icon_heart"></i> in <a href="http://cakecounter.com" target="_blank">CakeCounter</a></p>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</footer>
+      <!-- footer ENDED -->
+
+</body>
 
 </html>
