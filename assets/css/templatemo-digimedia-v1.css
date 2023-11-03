@@ -2116,7 +2116,7 @@ responsive
 
 @media (max-width: 992px) {
   .intro-banner:before {
-    display: none;
+    display: none; 
   }
   form#contact {
     overflow: hidden;
