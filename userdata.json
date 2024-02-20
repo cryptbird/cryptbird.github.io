@@ -1,0 +1,19 @@
+{
+    "users": {
+      "user1": {
+        "uid": "user1@ambiora.tech",
+        "tasksleft": 10,
+        "name": "user1"
+      },
+      "user2": {
+        "uid": "user2@ambiora.tech",
+        "tasksleft": 10,
+        "name": "user2"
+      },
+      "user3": {
+        "uid": "user3@ambiora.tech",
+        "tasksleft": 10,
+        "name": "user3"
+      }
+    }
+  }
