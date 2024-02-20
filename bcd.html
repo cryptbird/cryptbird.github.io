@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>abc.html</title>
+
+    <style>
+        .image-upload>input {
+            display: none;
+        }
+
+        body {
+            background-image: url(/assets/back\ treasure.png);
+            background-size: 80%;
+            opacity: 0.8;
+        }
+
+        #taskwindow {
+            width: 80vw;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2vh;
+            background-color: antiquewhite;
+            border: 10px solid #977e62;
+            background-image: url('/assets/striped2.png');
+            background-size: cover;
+
+            /* opacity: 0.5; */
+            border-radius: 25px;
+            /* border-image: url(/assets/borderframe.jpg); */
+
+
+        }
+
+        #taskDisplay {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            color: black;
+            height: 100px;
+            width: 55%;
+            margin-left: 10%;
+            font-family: godofwar;
+            padding: 10%;
+            overflow-wrap: break-word;
+            text-align: center;
+            font-size: larger;
+
+        }
+
+        @font-face {
+            font-family: godofwar;
+            src: url(/fonts/GODOFWAR.TTF);
+        }
+
+        #header {
+            height: 100px;
+            width: 100vw;
+            display: flex;
+        }
+
+        #subsec {
+            margin-left: auto;
+            margin-right: auto;
+            width: 80vw;
+            background-color: antiquewhite;
+            display: flex;
+            margin-top: 40px;
+        }
+
+        #imagesec {
+            width: 30vw;
+            margin-left: auto;
+            margin-right: auto;
+            /* background-color: aqua; */
+
+
+        }
+
+        #textsec {
+            width: 30vw;
+            margin-left: auto;
+            margin-right: auto;
+            /* background-color: aquamarine; */
+
+
+        }
+
+        #imagedis {
+            width: 100%;
+            background-color: bisque;
+            height: 95px;
+        }
+
+        #textans {
+            width: 100%;
+            background-color: bisque;
+            height: 95px;
+            border: 0.5px solid #c2b3a5;
+            padding: auto;
+            overflow-wrap: break-word;
+            text-align: center;
+        }
+
+        #uploadimagebutton {
+            /* height: 50px; */
+            width: 30vw;
+
+
+        }
+
+        #submitimagebutton {
+            /* height: 50px; */
+            width: 30vw;
+            margin-top: -20px;
+
+        }
+
+        #submittextbutton {
+            width: 30vw;
+            margin-top: -10px;
+
+        }
+
+        #statusdiv {
+            font-family: godofwar;
+            font-size: xx-large;
+            margin-top: 20px;
+            text-align: center;
+            padding: auto;
+
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        let uemail = "";
+        // Function to get URL parameters
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Get UID and name from URL parameters
+        var uid = getParameterByName('uid');
+
+        // Display UID and name on the page
+        // document.write('<p>UID: ' + uid + '</p>');
+
+        console.log(uid);
+    </script>
+    <div id="header">
+        <img src="/assets/treasure_ambiora12.png" alt="" height="80px"
+            style="margin-top: auto;margin-bottom: auto; margin-left: 10px;">
+        <p style="font-family: godofwar; margin:auto;font-size:xx-large; "> <b> AMBIORA'24</b></p>
+    </div>
+
+    <p style="font-family: godofwar; text-align: center; font-size:xx-large;margin-top: 6vh;"> <b> Scavenger Hunt</b>
+    </p>
+
+
+
+    <div id="taskwindow">
+        <div id="taskDisplay">
+            <!-- <b>    YEH EK TASK HAI JO TUMHEIN KARNA HAI JALDI SE JALDI SAMJHEIN NA NIGGAS</b> -->
+        </div>
+    </div>
+
+    <!-- <button onclick="showRandomTask()">Show Another Task</button> -->
+
+    <script>
+        let lastTask = 0;
+        // Function to fetch JSON data from data.json
+        async function fetchData() {
+            const response = await fetch('data.json');
+            const data = await response.json();
+            return data.tasks;
+        }
+
+        // Shuffle function to shuffle the tasks
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        let tasks = [];
+        let shuffledTasks = [];
+        let currentTaskIndex = 0;
+
+        // Function to show a random task
+        async function showRandomTask() {
+            if (currentTaskIndex === 0 || currentTaskIndex === tasks.length) {
+                // First time loading or after all tasks have been shown, fetch new tasks
+                tasks = await fetchData();
+                shuffledTasks = [...tasks];
+                shuffle(shuffledTasks);
+                currentTaskIndex = 0;
+            }
+
+            // Display the task
+            const taskDisplay = document.getElementById('taskDisplay');
+            taskDisplay.textContent = shuffledTasks[currentTaskIndex];
+            lastTask = shuffledTasks[currentTaskIndex];
+            // Increment the index for the next task
+            currentTaskIndex += 1;
+        }
+
+        // Initial load
+        showRandomTask();
+    </script>
+
+
+
+
+
+    <br><br>
+    <div id="subsec">
+        <div id="imagesec">
+            <div id="imagedis">
+                <img src="/assets/rambo.jpg" alt="" style="height: 100%; width: 100%;">
+                <!-- <input type="file" accept="image/*" name="" id="" style="height: 100%; width: 100%;"> -->
+            </div>
+            <div id="image-upload">
+                <label for="file-input">
+                    <img src="/assets/Upload_Image_BUTTON.png" style="height: 100%; width: 100%;" />
+                </label>
+
+                <input id="file-input" type="file" accept="image/*" style="display: none;" />
+
+            </div>
+            <input type="image" src="/assets/SUBMIT_IMAGE_Button.png" name="" id="submitimagebutton"
+                onclick="submitForm()">
+        </div>
+        <div id="textsec">
+            <input type="text" name="" id="textans" placeholder="ENTER TEXT">
+            <input type="image" src="/assets/SUBMIT_TEXT_Button.png" name="" id="submittextbutton"
+                onclick="submitText()">
+            <div id="statusdiv"></div>
+        </div>
+    </div>
+    <br><br><br>
+    <!-- <div id="imageinput">
+        <input type="file" accept="image/*">
+    </div>
+    <img src="" alt="">
+    <br><br>
+    <button onclick="submitForm()">
+        submit Image
+    </button> -->
+
+
+    <br><br><br>
+
+    <script>
+        let statusdiv = document.getElementById('statusdiv');
+        let a = document.getElementById('image-upload');
+        let b = document.getElementById('imagedis');
+        let url = "https://script.google.com/macros/s/AKfycbxWwhGd8m0KSlsiEaxz3r0PCQkSk_Z1ZSE4NqjmK_CTJqHhiE2UQPOhT9UHE_ehJzCtFA/exec";
+        let file = a.querySelector("input");
+        let img = b.querySelector("img");
+        let res = "";
+        let spt = "";
+        let obj = {};
+        let t = new Date().toLocaleTimeString();
+        let fr = "";
+        file.addEventListener('change', () => {
+            t = new Date().toLocaleTimeString();
+            fr = new FileReader();
+            console.log(uid);
+            fr.addEventListener('loadend', () => {
+                res = fr.result;
+                img.src = res;
+                spt = res.split("base64,")[1];
+                // console.log(spt);
+                obj = {
+                    base64: spt,
+                    type: file.files[0].type,
+                    // name: file.files[0].name
+                    name: uid,
+                    time: t,
+                    tasktodisplay: lastTask,
+                    texttodisplay: ""
+                }
+                console.log(obj);
+                // fetch(url, {
+                //     method: "POST",
+                //     body: JSON.stringify(obj)
+                // }).then(r => r.text()).then(data => console.log(data))
+            })
+            fr.readAsDataURL(file.files[0]);
+        })
+
+
+
+        function submitForm() {
+            statusdiv.innerHTML = "UPLOADING...";
+            t = new Date().toLocaleTimeString();
+            fr = new FileReader();
+            console.log(uid);
+            fr.addEventListener('loadend', () => {
+                res = fr.result;
+                img.src = res;
+                spt = res.split("base64,")[1];
+                // console.log(spt);
+                obj = {
+                    base64: spt,
+                    type: file.files[0].type,
+                    // name: file.files[0].name
+                    name: uid,
+                    time: t,
+                    tasktodisplay: lastTask
+                }
+                console.log(obj);
+                fetch(url, {
+                    method: "POST",
+                    body: JSON.stringify(obj)
+                }).then(r => r.text()).then(data => statusdiv.innerHTML = data, img.src = "")
+            })
+            fr.readAsDataURL(file.files[0]);
+            img.src = "";
+            showRandomTask();
+        }
+
+    </script>
+
+
+
+
+
+
+    <!-- <input type="text" name="textans" id="textans">
+    <button onclick="submitText()">
+        submit text
+    </button> -->
+    <script>
+        function showText() {
+
+            let textanswer = document.getElementById('textans');
+            let textans = textanswer.value;
+            console.log(textans);
+        }
+    </script>
+    <script>
+        function submitText() {
+            statusdiv.innerHTML = "UPLOADING...";
+            t = new Date().toLocaleTimeString();
+            console.log(uid);
+            let textanswer = document.getElementById('textans');
+            let textans = textanswer.value;
+            console.log(textans);
+
+
+
+
+            obj = {
+                base64: "",
+                type: "",
+                // name: file.files[0].name
+                name: uid,
+                time: t,
+                tasktodisplay: lastTask,
+                texttodisplay: textans
+            }
+            console.log(obj);
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify(obj)
+            }).then(r => r.text()).then(data => statusdiv.innerHTML = data)
+
+            showRandomTask();
+        }
+
+
+    </script>
+
+
+
+</body>
+
+</html>
