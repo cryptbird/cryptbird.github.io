@@ -17,8 +17,10 @@
     body {
       width: 100%;
       height: 100%;
-      background: -webkit-linear-gradient(25deg, #FFBE0B, #FB5607, #FF006E, #8338EC, #3A86FF);
-
+      /* background: -webkit-linear-gradient(25deg, #FFBE0B, #FB5607, #FF006E, #8338EC, #3A86FF); */
+      background-image: url(/assets/back\ treasure.png);
+      background-size: 80%;
+      opacity: 0.8;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -33,13 +35,13 @@
     }
 
     #content_container {
-      width: 30%;
-      height: 70%;
+      width: 60vw;
+      height: 50vh;
     }
 
     #form_container {
       width: 100%;
-      height: 100%;
+      /* height: 100%; */
 
       background-color: #370617;
       box-shadow: 0 0 50px -20px #000;
@@ -50,7 +52,7 @@
 
     #form_header_container {
       width: 100%;
-      height: 5%;
+      height: 5vh;
 
       display: flex;
       justify-content: center;
@@ -74,15 +76,15 @@
       text-transform: uppercase;
       letter-spacing: 1px;
 
-
-      background: -webkit-linear-gradient(25deg, #FFBE0B, #FB5607, #FF006E, #8338EC, #3A86FF);
+      font-size: xx-large;
+      /* background: -webkit-linear-gradient(25deg, #FFBE0B, #FB5607, #FF006E, #8338EC, #3A86FF); */
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-text-fill-color: white;
     }
 
     #form_content_container {
       width: 100%;
-      height: 90%;
+      /* height: 15vh; */
 
       float: left;
 
@@ -103,7 +105,7 @@
 
     input {
       width: 100%;
-      height: 40px;
+      height: 70px;
 
       padding-left: 10px;
       margin-bottom: 20px;
@@ -112,7 +114,7 @@
       font-family: Montserrat;
       font-weight: 500;
       color: #fff;
-      font-size: 12px;
+      font-size: 22px;
 
       border-bottom: 2px solid transparent;
       border-top-left-radius: 2%;
@@ -122,7 +124,7 @@
 
     #button_container {
       width: 100%;
-      height: 10%;
+      height: 65px;
 
       background-image: linear-gradient(80deg, #FFBE0B, #FB5607 50%, #FF006E 50%, #8338EC);
       color: #fff;
@@ -130,10 +132,11 @@
       float: left;
 
       margin-top: 5px;
+      margin-bottom: 50px;
     }
 
     #button_container button {
-      width: 50%;
+      width: 100%;
       height: 100%;
       float: left;
 
@@ -159,21 +162,21 @@
   <div id="content_container">
     <div id="form_container">
       <div id="form_header_container">
-        <h2 id="form_header"> Login + Firebase Database </h2>
+        <h2 id="form_header"> Login </h2>
       </div>
 
       <div id="form_content_container">
         <div id="form_content_inner_container">
-          <input type="text" id="full_name" placeholder="Full name">
+          <!-- <input type="text" id="full_name" placeholder="Full name"> -->
           <input type="email" id="email" placeholder="Email">
           <input type="password" id="password" placeholder="New Password">
 
-          <input type="text" id="favourite_song" placeholder="The Best Song Ever">
-          <input type="text" id="milk_before_cereal" placeholder="Milk Before Cereal? ( Yes | No )">
+          <!-- <input type="text" id="favourite_song" placeholder="The Best Song Ever">
+          <input type="text" id="milk_before_cereal" placeholder="Milk Before Cereal? ( Yes | No )"> -->
 
           <div id="button_container">
             <button onclick="login()">Login</button>
-            <button onclick="register()">Register</button>
+            <!-- <button onclick="register()">Register</button> -->
           </div>
 
         </div>
@@ -214,9 +217,9 @@
     // Get all our input fields
     email = document.getElementById('email').value
     password = document.getElementById('password').value
-    full_name = document.getElementById('full_name').value
-    favourite_song = document.getElementById('favourite_song').value
-    milk_before_cereal = document.getElementById('milk_before_cereal').value
+    // full_name = document.getElementById('full_name').value
+    // favourite_song = document.getElementById('favourite_song').value
+    // milk_before_cereal = document.getElementById('milk_before_cereal').value
 
     // Validate input fields
     if (validate_email(email) == false || validate_password(password) == false) {
@@ -266,6 +269,7 @@
   // Set up our login function
   // Set up our login function
   function login() {
+    console.log('pressed');
     // Get all our input fields
     email = document.getElementById('email').value
     password = document.getElementById('password').value
