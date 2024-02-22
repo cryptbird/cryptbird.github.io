@@ -307,7 +307,7 @@
         function submitForm() {
             let anss = "";
 
-            statusdiv.innerHTML = "UPLOADING...";
+            statusdiv.innerHTML = "Please Wait TIll UPLOADING...";
             t = new Date().toLocaleTimeString();
             fr = new FileReader();
             console.log(uid);
@@ -342,7 +342,6 @@
                 // }
 
                 showRandomTask();
-                file.files[0] = null;
 
             }
 
