@@ -138,7 +138,7 @@
 <body>
 
 
-    <script>
+    <!-- <script>
         let uemail = "";
         // Function to get URL parameters
         function getParameterByName(name, url) {
@@ -158,7 +158,7 @@
         // document.write('<p>UID: ' + uid + '</p>');
 
         console.log(uid);
-    </script>
+    </script> -->
     <div id="header">
         <img src="/assets/treasure_ambiora12.png" alt="" height="200px"
             style="margin-top: auto;margin-bottom: auto; margin-left: 10px;">
@@ -172,6 +172,7 @@
 
     <div id="taskwindow">
         <div id="taskDisplay">
+            SUBMISSION CLOSED
             <!-- <b>    YEH EK TASK HAI JO TUMHEIN KARNA HAI JALDI SE JALDI SAMJHEIN NA NIGGAS</b> -->
         </div>
     </div>
@@ -179,46 +180,46 @@
     <!-- <button onclick="showRandomTask()">Show Another Task</button> -->
 
     <script>
-        let lastTask = 0;
-        // Function to fetch JSON data from data.json
-        async function fetchData() {
-            const response = await fetch('data.json');
-            const data = await response.json();
-            return data.tasks;
-        }
+        // let lastTask = 0;
+        // // Function to fetch JSON data from data.json
+        // async function fetchData() {
+        //     const response = await fetch('data.json');
+        //     const data = await response.json();
+        //     return data.tasks;
+        // }
 
-        // Shuffle function to shuffle the tasks
-        function shuffle(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
+        // // Shuffle function to shuffle the tasks
+        // function shuffle(array) {
+        //     for (let i = array.length - 1; i > 0; i--) {
+        //         const j = Math.floor(Math.random() * (i + 1));
+        //         [array[i], array[j]] = [array[j], array[i]];
+        //     }
+        // }
 
-        let tasks = [];
-        let shuffledTasks = [];
-        let currentTaskIndex = 0;
+        // let tasks = [];
+        // let shuffledTasks = [];
+        // let currentTaskIndex = 0;
 
-        // Function to show a random task
-        async function showRandomTask() {
-            if (currentTaskIndex === 0 || currentTaskIndex === tasks.length) {
-                // First time loading or after all tasks have been shown, fetch new tasks
-                tasks = await fetchData();
-                shuffledTasks = [...tasks];
-                shuffle(shuffledTasks);
-                currentTaskIndex = 0;
-            }
+        // // Function to show a random task
+        // async function showRandomTask() {
+        //     if (currentTaskIndex === 0 || currentTaskIndex === tasks.length) {
+        //         // First time loading or after all tasks have been shown, fetch new tasks
+        //         tasks = await fetchData();
+        //         shuffledTasks = [...tasks];
+        //         shuffle(shuffledTasks);
+        //         currentTaskIndex = 0;
+        //     }
 
-            // Display the task
-            const taskDisplay = document.getElementById('taskDisplay');
-            taskDisplay.textContent = shuffledTasks[currentTaskIndex];
-            lastTask = shuffledTasks[currentTaskIndex];
-            // Increment the index for the next task
-            currentTaskIndex += 1;
-        }
+        //     // Display the task
+        //     const taskDisplay = document.getElementById('taskDisplay');
+        //     taskDisplay.textContent = shuffledTasks[currentTaskIndex];
+        //     lastTask = shuffledTasks[currentTaskIndex];
+        //     // Increment the index for the next task
+        //     currentTaskIndex += 1;
+        // }
 
-        // Initial load
-        showRandomTask();
+        // // Initial load
+        // showRandomTask();
     </script>
 
 
@@ -234,20 +235,20 @@
             </div>
             <div id="image-upload">
                 <label for="file-input">
-                    <img src="/assets/Upload_Image_BUTTON.png" style="height: 100%; width: 100%;" />
+                    <!-- <img src="/assets/Upload_Image_BUTTON.png" style="height: 100%; width: 100%;" /> -->
                 </label>
 
-                <input id="file-input" type="file" accept="image/*" style="display: none;" />
+                <!-- <input id="file-input" type="file" accept="image/*" style="display: none;" /> -->
 
             </div>
-            <input type="image" src="/assets/SUBMIT_IMAGE_Button.png" name="" id="submitimagebutton"
-                onclick="submitForm()">
+            <!-- <input type="image" src="/assets/SUBMIT_IMAGE_Button.png" name="" id="submitimagebutton"
+                onclick="submitForm()"> -->
         </div>
         <div id="textsec">
-            <input type="text" name="" id="textans" placeholder="ENTER TEXT">
+            <!-- <input type="text" name="" id="textans" placeholder="ENTER TEXT">
             <input type="image" src="/assets/SUBMIT_TEXT_Button.png" name="" id="submittextbutton"
-                onclick="submitText()">
-            <div id="statusdiv"></div>
+                onclick="submitText()"> -->
+            <!-- <div id="statusdiv"></div> -->
         </div>
     </div>
     <br><br><br>
@@ -264,88 +265,88 @@
     <br><br><br>
 
     <script>
-        let statusdiv = document.getElementById('statusdiv');
-        let a = document.getElementById('image-upload');
-        let b = document.getElementById('imagedis');
-        let url = "https://script.google.com/macros/s/AKfycbxWwhGd8m0KSlsiEaxz3r0PCQkSk_Z1ZSE4NqjmK_CTJqHhiE2UQPOhT9UHE_ehJzCtFA/exec";
-        let file = a.querySelector("input");
-        let img = b.querySelector("img");
-        let res = "";
-        let spt = "";
-        let obj = {};
-        let t = new Date().toLocaleTimeString();
-        let fr = "";
-        file.addEventListener('change', () => {
-            t = new Date().toLocaleTimeString();
-            fr = new FileReader();
-            console.log(uid);
-            fr.addEventListener('loadend', () => {
-                res = fr.result;
-                img.src = res;
-                spt = res.split("base64,")[1];
-                // console.log(spt);
-                obj = {
-                    base64: spt,
-                    type: file.files[0].type,
-                    // name: file.files[0].name
-                    name: uid,
-                    time: t,
-                    tasktodisplay: lastTask,
-                    texttodisplay: ""
-                }
-                console.log(obj);
-                // fetch(url, {
-                //     method: "POST",
-                //     body: JSON.stringify(obj)
-                // }).then(r => r.text()).then(data => console.log(data))
-            })
-            fr.readAsDataURL(file.files[0]);
-        })
+        // let statusdiv = document.getElementById('statusdiv');
+        // let a = document.getElementById('image-upload');
+        // let b = document.getElementById('imagedis');
+        // let url = "https://script.google.com/macros/s/AKfycbxWwhGd8m0KSlsiEaxz3r0PCQkSk_Z1ZSE4NqjmK_CTJqHhiE2UQPOhT9UHE_ehJzCtFA/exec";
+        // let file = a.querySelector("input");
+        // let img = b.querySelector("img");
+        // let res = "";
+        // let spt = "";
+        // let obj = {};
+        // let t = new Date().toLocaleTimeString();
+        // let fr = "";
+        // file.addEventListener('change', () => {
+        //     t = new Date().toLocaleTimeString();
+        //     fr = new FileReader();
+        //     console.log(uid);
+        //     fr.addEventListener('loadend', () => {
+        //         res = fr.result;
+        //         img.src = res;
+        //         spt = res.split("base64,")[1];
+        //         // console.log(spt);
+        //         obj = {
+        //             base64: spt,
+        //             type: file.files[0].type,
+        //             // name: file.files[0].name
+        //             name: uid,
+        //             time: t,
+        //             tasktodisplay: lastTask,
+        //             texttodisplay: ""
+        //         }
+        //         console.log(obj);
+        //         // fetch(url, {
+        //         //     method: "POST",
+        //         //     body: JSON.stringify(obj)
+        //         // }).then(r => r.text()).then(data => console.log(data))
+        //     })
+        //     fr.readAsDataURL(file.files[0]);
+        // })
 
 
 
-        function submitForm() {
-            let anss = "";
+        // function submitForm() {
+        //     let anss = "";
 
-            statusdiv.innerHTML = "Please Wait TIll UPLOADING...";
-            t = new Date().toLocaleTimeString();
-            fr = new FileReader();
-            console.log(uid);
-            if (file.files[0] == null) {
-                statusdiv.innerHTML = "PLEASE SUBMIT RELEVANT FILE"
-            } else {
-                fr.addEventListener('loadend', () => {
-                    res = fr.result;
-                    img.src = res;
-                    spt = res.split("base64,")[1];
-                    // console.log(spt);
-                    obj = {
-                        base64: spt,
-                        type: file.files[0].type,
-                        // name: file.files[0].name
-                        name: uid,
-                        time: t,
-                        tasktodisplay: lastTask
-                    }
-                    console.log(obj);
-                    fetch(url, {
-                        method: "POST",
-                        body: JSON.stringify(obj)
-                    }).then(r => r.text()).then(data => statusdiv.innerHTML = data, img.src = "")
-                })
-                fr.readAsDataURL(file.files[0]);
-                img.src = "";
-                console.log(file.files[0])
-                console.log(statusdiv.innerHTML);
-                // while(statusdiv.innerHTML=='UPLOADING...'){
-                //     console.log('loading')
-                // }
+        //     statusdiv.innerHTML = "Please Wait TIll UPLOADING...";
+        //     t = new Date().toLocaleTimeString();
+        //     fr = new FileReader();
+        //     console.log(uid);
+        //     if (file.files[0] == null) {
+        //         statusdiv.innerHTML = "PLEASE SUBMIT RELEVANT FILE"
+        //     } else {
+        //         fr.addEventListener('loadend', () => {
+        //             res = fr.result;
+        //             img.src = res;
+        //             spt = res.split("base64,")[1];
+        //             // console.log(spt);
+        //             obj = {
+        //                 base64: spt,
+        //                 type: file.files[0].type,
+        //                 // name: file.files[0].name
+        //                 name: uid,
+        //                 time: t,
+        //                 tasktodisplay: lastTask
+        //             }
+        //             console.log(obj);
+        //             fetch(url, {
+        //                 method: "POST",
+        //                 body: JSON.stringify(obj)
+        //             }).then(r => r.text()).then(data => statusdiv.innerHTML = data, img.src = "")
+        //         })
+        //         fr.readAsDataURL(file.files[0]);
+        //         img.src = "";
+        //         console.log(file.files[0])
+        //         console.log(statusdiv.innerHTML);
+        //         // while(statusdiv.innerHTML=='UPLOADING...'){
+        //         //     console.log('loading')
+        //         // }
 
-                showRandomTask();
+        //         showRandomTask();
 
-            }
+        //     }
 
-        }
+        // }
 
     </script>
 
@@ -359,44 +360,45 @@
         submit text
     </button> -->
     <script>
-        function showText() {
+        //     function showText() {
 
-            let textanswer = document.getElementById('textans');
-            let textans = textanswer.value;
-            console.log(textans);
-        }
-    </script>
+        //         let textanswer = document.getElementById('textans');
+        //         let textans = textanswer.value;
+        //         console.log(textans);
+        //     }
+        // </script>
+    //
     <script>
-        function submitText() {
-            let textanswer = document.getElementById('textans');
-            let textans = textanswer.value;
-            console.log(textans);
-            statusdiv.innerHTML = "UPLOADING...";
-            t = new Date().toLocaleTimeString();
-            console.log(uid);
+        //     function submitText() {
+        //         let textanswer = document.getElementById('textans');
+        //         let textans = textanswer.value;
+        //         console.log(textans);
+        //         statusdiv.innerHTML = "UPLOADING...";
+        //         t = new Date().toLocaleTimeString();
+        //         console.log(uid);
 
 
 
-            if (textans == "") { statusdiv.innerHTML = "Please enter value"; } else {
+        //         if (textans == "") { statusdiv.innerHTML = "Please enter value"; } else {
 
-                obj = {
-                    base64: "",
-                    type: "",
-                    // name: file.files[0].name
-                    name: uid,
-                    time: t,
-                    tasktodisplay: lastTask,
-                    texttodisplay: textans
-                }
-                console.log(obj);
-                fetch(url, {
-                    method: "POST",
-                    body: JSON.stringify(obj)
-                }).then(r => r.text()).then(data => statusdiv.innerHTML = data)
+        //             obj = {
+        //                 base64: "",
+        //                 type: "",
+        //                 // name: file.files[0].name
+        //                 name: uid,
+        //                 time: t,
+        //                 tasktodisplay: lastTask,
+        //                 texttodisplay: textans
+        //             }
+        //             console.log(obj);
+        //             fetch(url, {
+        //                 method: "POST",
+        //                 body: JSON.stringify(obj)
+        //             }).then(r => r.text()).then(data => statusdiv.innerHTML = data)
 
-                showRandomTask();
-            }
-        }
+        //             showRandomTask();
+        //         }
+        //     }
 
 
     </script>
