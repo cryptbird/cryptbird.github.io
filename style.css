@@ -10,6 +10,7 @@ body {
 }
 .paper {
   background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
+  /* background-image: url("https://img.freepik.com/free-photo/wooden-floor-background_53876-88628.jpg?t=st=1718303345~exp=1718306945~hmac=b357cb0b00c6115276cdb491e6340af50f81f7e91faf26f8eef8a2d0354dfd94&w=1060"); */
   background-size: 500px;
   background-position: center center;
   padding: 20px 100px;
