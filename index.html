@@ -1,93 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>❤️Gabbar-Samba❤️</title>
-    <link rel='stylesheet'
-        href='https://fonts.googleapis.com/css2?family=Short+Stack&amp;family=Homemade+Apple&amp;display=swap'>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Sheets Form</title>
+  <style>
+    *{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: 'poppins', sans-serif;
+	font-size: 18px;
+}
+body{
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.container{
+	width: 500px;
+	padding: 30px;
+	border: 1px solid #eeeeee;
+	border-radius: 10px;
+	background-color: #003b5b;
+}
+h4{
+	margin-bottom: 10px;
+	font-size: 24px;
+	color: white;
+}
+input{
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+textarea{
+	width: 100%;
+	padding: 10px;
+}
+#submit{
+	border: none;
+	background-color: orangered;
+	color: white;
+	width: 200px;
+	margin-top: 10px;
+	border-radius: 5px;
+}
+#submit:hover{
+	background-color: #333333;
+}
+  </style>
 </head>
-
 <body>
     
-    <!-- Developed by Saravanan  -->
-    <div class="paper heart">
-    </div>
-    <div class="paper image" >
-        <center>
-        <p> I fallen in</p>
-        <p>Love with You 😍 </p>
-    </center>
-        <img src="/assets/3.jpg" />
-    </div>
-    <div class="paper red">
-        <center>
-        <p class="p1"> And this</p>
-        <p class="p2"> Way ❤️ </p>
-    </center>
-    </div>
-    <div class="paper image" style=" width: 300px;">
-        <p< /p>
-            <img src="/assets/9.jpg" />
-    </div>
-    <div class="paper red">
-        <center>
-        <p class="p1"> On our way the </p>
-        <p class="p2"> Bonds Were Made ❤️ </p>
-    </center>
-    </div>
-    <div class="paper image">
-        <center> <p>How we met </p>
-         <p> and noticed the moon </p>
-         <p> on the day nature united us. </p>
-     </center>
-         <img src="assets/moon.jpg" />
-     </div>
-    <div class="paper red">
-        <center>
-        <p class="p1"> Daily With the rays of morning sun </p>
-        <p class="p2"> I thank god for letting me </p>
-        <p class="p2"> have you ❤️</p>
-    </center>
-    </div>
-    <div class="paper image">
-       <center> <p>How can be </p>
-        <p> someone so cute ❤️ </p>
-    </center>
-        <img src="assets/7.jpg" />
-    </div>
-    <div class="paper red">
-        <center>
-            <p class="p1">But. I have an</p>
-            <p class="p2">honest doubt! 🤔</p>
-        </center>
-    </div>
-    <div class="paper red">
-        <center>
-            <p class="p1" style="font-size: 42px;">Jyada expressive nahi hun shyd </p>
-            <p class="p2" style="font-size: 42px;">but consider this 😍 my way of </p>
-            <p class="p2" style="font-size: 42px;">sending long texts (yes was jealous of ur ex 😅)</p>
-        </center>
-    </div>
-    <div class="paper red">
-        <p class="p1"> Heyy! My Chubby Cheeks.</p>
-        <p class="p2">I love You So Much❤️</p>
-    </div>
-    <!-- <div class="paper red">
-        <p class="p1"> Heyy My Chubby Cheeks. I Love You Soo Much</p>
-        <p class="p2">Jyada expressive nahi hun shyd but consider this 😍</p>
-        <p class="p2">my way of sending long texts (yes was jealous of ur ex 😅)</p>
-    </div> -->
-    <div class="paper">
-        <p class="p1">When Gabbar </p>
-        <p class="p1">Met Samba <span style="color: red !important;">❤️</span></p>
-    </div>
-    <div class="paper">
-        <p class="p1">Drag the papers to move!</p>
-    </div>
-    <!-- javascript file -->
-    <script src="script.js"></script>
-</body>
+        <div class="container">
+          <form method="post" action="" name="contact-form">
+            <h4>Contact Us</h4>
+            <input type="text" name="name" placeholder="Name">
+            <input type="text" name="number" placeholder="Number">
+            <input type="email" name="email" placeholder="Email">
+            <textarea name="message" rows="7" placeholder="Your Message">
+            </textarea>
+            <input type="submit" value="Submit" id="submit">
+              </form>
+          </div>
+      
+  <script>
+const form = document.forms['contact-form']
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxcFg05bQic8Gvz6N0VBmnjKScSqmDw5AsXUeQh79TxZQC8lT56aRqcjnuyD_RAAEZ5/exec'
 
+
+form.addEventListener('submit', e => {
+  
+  e.preventDefault()
+  
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+  .then(response => alert("Thank you! Form is submitted" ))
+  .catch(error => console.error('Error!', error.message))
+})
+
+  </script>
+</body>
 </html>
