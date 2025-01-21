@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -80,6 +80,70 @@ form.addEventListener('submit', e => {
   .catch(error => console.error('Error!', error.message))
 })
 
+  </script>
+</body>
+</html>
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Input to Google Sheets</title>
+  
+</head>
+<body>
+  <h1>Submit Your Details</h1>
+  <form id="dataForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="roll">Roll Number:</label>
+    <input type="text" id="roll" name="roll" required><br><br>
+
+    <label for="github">GitHub Link:</label>
+    <input type="url" id="github" name="github" required><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>Submitted Name:</h2>
+  <p id="submittedName">None</p>
+
+  <script>
+    const form = document.getElementById('dataForm');
+    const submittedName = document.getElementById('submittedName');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const roll = document.getElementById('roll').value;
+      const github = document.getElementById('github').value;
+
+      // Display the submitted name
+      submittedName.textContent = name;
+
+      // Submit the form data to Google Sheets
+      fetch('https://script.google.com/macros/s/AKfycbxcFg05bQic8Gvz6N0VBmnjKScSqmDw5AsXUeQh79TxZQC8lT56aRqcjnuyD_RAAEZ5/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, roll, github }),
+      })
+        .then((response) => response.text())
+        .then((data) => {
+          console.log(data); // Log the response from the server
+          alert('Data submitted successfully!');
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          alert('Failed to submit data.');
+        });
+    });
   </script>
 </body>
 </html>
