@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         body {
@@ -33,6 +34,9 @@
         #printBtn:hover {
             background-color: #0056b3;
         }
+        #chartContainer {
+            margin-top: 40px;
+        }
     </style>
 </head>
 <body>
@@ -41,6 +45,11 @@
         <h1>Patient Information</h1>
         <div id="patientData">
             <!-- Data will be displayed here -->
+        </div>
+
+        <div id="chartContainer">
+            <h2>Percentage Chart</h2>
+            <canvas id="barChart"></canvas>
         </div>
     </div>
 
@@ -56,15 +65,13 @@
         // Function to display the data
         function displayData() {
             const patientData = {
-                
-                
                 patientId: getURLParameter('patient_id'),
-                socialResponsiveness: getURLParameter('social_response'),
-                emotionalResponsiveness: getURLParameter('emotional_response'),
-                speechRecognition: getURLParameter('speech_recognition'),
-                behaviouralPattern: getURLParameter('behaviour_pattern'),
-                sensoryAspects: getURLParameter('sensory_aspect'),
-                cognitiveComponent: getURLParameter('cognitive')
+                socialResponsiveness: parseFloat(getURLParameter('social_response')) || 0,
+                emotionalResponsiveness: parseFloat(getURLParameter('emotional_response')) || 0,
+                speechRecognition: parseFloat(getURLParameter('speech_recognition')) || 0,
+                behaviouralPattern: parseFloat(getURLParameter('behaviour_pattern')) || 0,
+                sensoryAspects: parseFloat(getURLParameter('sensory_aspect')) || 0,
+                cognitiveComponent: parseFloat(getURLParameter('cognitive')) || 0
             };
 
             const patientDataContainer = document.getElementById('patientData');
@@ -74,6 +81,67 @@
                 fieldDiv.innerHTML = `<span class="label">${key.replace(/([A-Z])/g, ' $1').toUpperCase()}:</span> ${value || 'N/A'}`;
                 patientDataContainer.appendChild(fieldDiv);
             }
+
+            // Generate bar chart
+            createBarChart(patientData);
+        }
+
+        // Function to create a bar chart
+        function createBarChart(data) {
+            const labels = [
+                'Social Responsiveness',
+                'Emotional Responsiveness',
+                'Speech Recognition',
+                'Behavioural Pattern',
+                'Sensory Aspects',
+                'Cognitive Component'
+            ];
+
+            const values = [
+                data.socialResponsiveness,
+                data.emotionalResponsiveness,
+                data.speechRecognition,
+                data.behaviouralPattern,
+                data.sensoryAspects,
+                data.cognitiveComponent
+            ];
+
+            const ctx = document.getElementById('barChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Percentage',
+                        data: values,
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(201, 203, 207, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(201, 203, 207, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
         }
 
         // Call the function to display data once the page loads
