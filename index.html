@@ -1,95 +1,97 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Google Sheets Form</title>
-	<style>
-		* {
-			box-sizing: border-box;
-			padding: 0;
-			margin: 0;
-			font-family: 'poppins', sans-serif;
-			font-size: 18px;
-		}
-
-		body {
-			height: 100vh;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-
-		.container {
-			width: 500px;
-			padding: 30px;
-			border: 1px solid #eeeeee;
-			border-radius: 10px;
-			background-color: #003b5b;
-		}
-
-		h4 {
-			margin-bottom: 10px;
-			font-size: 24px;
-			color: white;
-		}
-
-		input {
-			width: 100%;
-			padding: 10px;
-			margin-bottom: 10px;
-		}
-
-		textarea {
-			width: 100%;
-			padding: 10px;
-		}
-
-		#submit {
-			border: none;
-			background-color: orangered;
-			color: white;
-			width: 200px;
-			margin-top: 10px;
-			border-radius: 5px;
-		}
-
-		#submit:hover {
-			background-color: #333333;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Data</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .data-field {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .label {
+            font-weight: bold;
+        }
+        #printBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #printBtn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
-
 <body>
 
-	<div class="container">
-		<form method="post" action="" name="contact-form">
-			<h4>Contact Us</h4>
-			<input type="text" name="name" placeholder="Name">
-			<input type="text" name="number" placeholder="Number">
-			<input type="email" name="email" placeholder="Email">
-			<textarea name="message" rows="7" placeholder="Your Message">
-            </textarea>
-			<input type="submit" value="Submit" id="submit">
-		</form>
-	</div>
+    <div class="container" id="contentToPrint">
+        <h1>Patient Information</h1>
+        <div id="patientData">
+            <!-- Data will be displayed here -->
+        </div>
+    </div>
 
-	<script>
-		const form = document.forms['contact-form']
-		const scriptURL = 'https://script.google.com/macros/s/AKfycbxcFg05bQic8Gvz6N0VBmnjKScSqmDw5AsXUeQh79TxZQC8lT56aRqcjnuyD_RAAEZ5/exec'
+    <button id="printBtn">Print PDF</button>
 
-		// Something new
-		form.addEventListener('submit', e => {
+    <script>
+        // Function to get URL parameters
+        function getURLParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
 
-			e.preventDefault()
+        // Function to display the data
+        function displayData() {
+            const patientData = {
+                
+                
+                patientId: getURLParameter('patient_id'),
+                socialResponsiveness: getURLParameter('social_response'),
+                emotionalResponsiveness: getURLParameter('emotional_response'),
+                speechRecognition: getURLParameter('speech_recognition'),
+                behaviouralPattern: getURLParameter('behaviour_pattern'),
+                sensoryAspects: getURLParameter('sensory_aspect'),
+                cognitiveComponent: getURLParameter('cognitive')
+            };
 
-			fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-				.then(response => alert("Thank you! Form is submitted"))
-				.catch(error => console.error('Error!', error.message))
-		})
+            const patientDataContainer = document.getElementById('patientData');
+            for (const [key, value] of Object.entries(patientData)) {
+                const fieldDiv = document.createElement('div');
+                fieldDiv.classList.add('data-field');
+                fieldDiv.innerHTML = `<span class="label">${key.replace(/([A-Z])/g, ' $1').toUpperCase()}:</span> ${value || 'N/A'}`;
+                patientDataContainer.appendChild(fieldDiv);
+            }
+        }
 
-	</script>
+        // Call the function to display data once the page loads
+        window.onload = displayData;
+
+        // Add functionality to the Print PDF button
+        document.getElementById('printBtn').addEventListener('click', function () {
+            const element = document.getElementById('contentToPrint');
+            const options = {
+                margin: 1,
+                filename: 'patient_data.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().set(options).from(element).save();
+        });
+    </script>
+
 </body>
-
 </html>
