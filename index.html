@@ -86,7 +86,7 @@
             createBarChart(patientData);
         }
 
-        // Function to create a bar chart
+        // Function to create a horizontal bar chart
         function createBarChart(data) {
             const labels = [
                 'Social Responsiveness',
@@ -134,8 +134,9 @@
                     }]
                 },
                 options: {
+                    indexAxis: 'y', // This reverses the axes
                     scales: {
-                        y: {
+                        x: {
                             beginAtZero: true,
                             max: 100
                         }
