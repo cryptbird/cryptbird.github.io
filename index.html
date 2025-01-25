@@ -109,7 +109,7 @@
 			patterns through advanced A1 algorithms trained to detect subtle markers
 			of developmental differences.
 			<br /><br />
-			The system provides outputs as 'Positive for Autism' - Mild Autism 
+			The system provides outputs as <span id="classificationmessage" style="font-size: 15px; color: #007bff;"></span>
 			<br /><br />
 		</div>
 		<span style="
@@ -200,6 +200,7 @@
 		// Generate bar chart
 		createBarChart(patientData);
 		document.getElementById('message').innerHTML = patientData.testscore;
+		document.getElementById('classificationmessage').innerHTML = patientData.classification;
 	}
 	
 	// Function to create a horizontal bar chart
