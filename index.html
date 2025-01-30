@@ -57,13 +57,12 @@
 		}
 
 		.pageheadline {
-			border-bottom: 5px solid #ab29b9;
 			padding-bottom: 15px;
 			font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
 				Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
 				sans-serif;
 			font-weight: 600;
-			font-size: small;
+			font-size: large;
 		}
 
 		.reportheading {
@@ -78,7 +77,7 @@
 		.reportcontent {
 			margin: 25px;
 			font-size: 15px;
-			color: #727a98;
+			color: #000;
 			font-family: "Times New Roman", Times, serif;
 			font-weight: 600;
 			line-height: 25px;
@@ -91,14 +90,40 @@
 			font-weight: 600;
 			line-height: 15px;
 		}	
-		
+		#contentToPrint {
+			/* background-color: #FFDDDD; */
+			/* Light pink background */
+			padding: 20px;
+			/* Add padding for better spacing */
+		}
+		/* Desktop mode for mobile */
+		@media only screen and (max-width: 767px) {
+			.container {
+				width: 1024px;
+			}
+			body {
+				padding: 0;
+				margin: 0;
+			}
+		}
 	</style>
 </head>
 
 <body>
-	<div id="contentToPrint" style="margin: 0; padding: 0">
-		<div class="pageheadline" style="border-bottom: 0;"> .</div>
-		<div class="pageheadline">Detailed Feature Report</div>
+	<div id="contentToPrint" style="margin: 0; padding: 10">
+		<div style="display: flex; border-bottom: 5px solid #ab29b9;">
+			<div>
+				<div class="pageheadline" style="border-bottom: 0; font-size: small;" id="pageheadlinedate"> .</div>
+				<div class="pageheadline" style="display: flex;">Detailed VSMS Report</div>
+			</div>
+			<div style="margin-left: auto; margin-right: 0; ">
+				<div style=" height: 60px;">
+
+					<img src="aignosislogo.png" style="max-height:150%; max-width:150%;" alt="">
+
+				</div>
+			</div>
+		</div>
 		<div class="reportheading">
 			<span style="color: #9b00ab">Developmental </span>Screening:
 		</div>
@@ -115,7 +140,7 @@
 		<span style="
           color: #9b00ab;
           font-family: 'Times New Roman', Times, serif;
-          font-size: 15px;
+          font-size: 20px;
           font-weight: 600;
 		  margin-left: 25px;
         ">
@@ -124,7 +149,7 @@
 		<br />
 		<span style="
           font-family: 'Times New Roman', Times, serif;
-          font-size: 15px;
+          font-size: 12px;
           font-weight: 600;
 		  margin-left: 25px;
         ">
@@ -184,7 +209,7 @@
 			sensoryAspects: parseFloat(getURLParameter("sensory_aspect")) || 0,
 			cognitiveComponent: parseFloat(getURLParameter("cognitive")) || 0,
 			testscore:parseFloat(getURLParameter("testscore")) || 0,
-			classification:parseFloat(getURLParameter("classification")) || 0,
+			classification:getURLParameter("classification") || 0,
 		};
 
 		const patientDataContainer = document.getElementById("patientData");
@@ -199,6 +224,8 @@
 
 		// Generate bar chart
 		createBarChart(patientData);
+		const currentDate = new Date().toLocaleString();
+		document.getElementById('pageheadlinedate').innerHTML = currentDate;
 		document.getElementById('message').innerHTML = patientData.testscore;
 		document.getElementById('classificationmessage').innerHTML = patientData.classification;
 	}
@@ -273,7 +300,7 @@
 		.addEventListener("click", function () {
 			const element = document.getElementById("contentToPrint");
 			const options = {
-				margin: [0, 0.5, 0, 0], // No margins
+				margin: [0, 0, 0, 0], // No margins
 				filename: "patient_data.pdf",
 				image: { type: "jpeg", quality: 0.98 },
 				html2canvas: {
