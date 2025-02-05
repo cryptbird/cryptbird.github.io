@@ -6,120 +6,178 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Patient Data</title>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.16.0/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 	<style>
-		body {
-			font-family: Arial, sans-serif;
-			margin-top: 0;
-			padding: 180px;
-		}
+        body {
+            font-family: Arial, sans-serif;
+            margin-top: 0;
+            padding: 180px;
+            margin: 10px 0 !important;
+            /* Ensure margins are applied on all pages */
+            /* padding: 0; */
+        }
 
-		.container {
-			width: 100%;
-			max-width: 7.5in;
-			/* Ensure it fits within the PDF width (8.5in - margins) */
-			/* margin: auto; */
-			overflow: hidden;
-			/* Prevent content overflow */
-			word-wrap: break-word;
-			/* Wrap long text */
-		}
+        .container {
+            width: 100%;
+            max-width: 7.5in;
+            /* Ensure it fits within the PDF width (8.5in - margins) */
+            /* margin: auto; */
+            overflow: hidden;
+            /* Prevent content overflow */
+            word-wrap: break-word;
+            /* Wrap long text */
+        }
 
-		.data-field {
-			margin-bottom: 10px;
-			font-size: 16px;
-		}
+        .data-field {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
 
-		.label {
-			font-weight: bold;
-		}
+        .label {
+            font-weight: bold;
+        }
 
-		#printBtn {
-			margin-top: 20px;
-			padding: 10px 20px;
-			background-color: #007bff;
-			color: #fff;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-		}
+        #printBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-		#printBtn:hover {
-			background-color: #0056b3;
-		}
+        #printBtn:hover {
+            background-color: #0056b3;
+        }
 
-		#chartContainer {
-			margin-top: 40px;
-			max-width: 7.5in;
-			/* Match container width */
-			overflow-x: auto;
-			/* Allow scrolling for wide charts */
-		}
+        #chartContainer {
+            margin-top: 40px;
+            max-width: 7.5in;
+            /* Match container width */
+            overflow-x: auto;
+            /* Allow scrolling for wide charts */
+        }
 
-		.pageheadline {
-			padding-bottom: 15px;
-			font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-				Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-				sans-serif;
-			font-weight: 600;
-			font-size: large;
-		}
+        #chartContainermchat {
+            margin-top: 40px;
+            max-width: 7.5in;
+            /* Match container width */
+            overflow-x: auto;
+            /* Allow scrolling for wide charts */
+        }
 
-		.reportheading {
-			font-size: 30px;
-			font-family: "Times New Roman", Times, serif;
-			font-weight: 900;
-			margin-top: 50px;
-			margin-left: 25px;
-			margin-right: 25px;
-		}
+        .pageheadline {
+            padding-bottom: 15px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+                sans-serif;
+            font-weight: 600;
+            font-size: large;
+        }
 
-		.reportcontent {
-			margin: 25px;
-			font-size: 15px;
-			color: #000;
-			font-family: "Times New Roman", Times, serif;
-			font-weight: 600;
-			line-height: 25px;
-		}
-		.scorecontent {
-			margin: 25px;
-			font-size: 12px;
-			color: #727a98;
-			font-family: "Times New Roman", Times, serif;
-			font-weight: 600;
-			line-height: 15px;
-		}	
-		#contentToPrint {
-			/* background-color: #FFDDDD; */
-			/* Light pink background */
-			padding: 20px;
-			/* Add padding for better spacing */
-		}
-		/* Desktop mode for mobile */
-		@media only screen and (max-width: 767px) {
-			.container {
-				width: 1024px;
-			}
-			body {
-				padding: 0;
-				margin: 0;
-			}
-		}
+        .reportheading {
+            font-size: 30px;
+            font-family: "Times New Roman", Times, serif;
+            font-weight: 900;
+            margin-top: 50px;
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+
+        .reportcontent {
+            margin: 25px;
+            font-size: 15px;
+            color: #000;
+            font-family: "Times New Roman", Times, serif;
+            font-weight: 600;
+            line-height: 25px;
+        }
+
+        .scorecontent {
+            margin: 25px;
+            font-size: 12px;
+            color: #727a98;
+            font-family: "Times New Roman", Times, serif;
+            font-weight: 600;
+            line-height: 15px;
+        }
+
+        #contentToPrint {
+            /* background-color: #FFDDDD; */
+            /* Light pink background */
+            padding: 20px;
+            /* Add padding for better spacing */
+            margin: 10px 0 !important;
+            /* Add space before and after pages */
+            /* padding: 10px;  */
+            page-break-inside: avoid;
+            /* Avoid cutting content in between */
+        }
+        /* Prevent table rows from breaking across pages */
+table {
+    page-break-inside: 60px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+}
+
+td, th {
+    padding: 8px;
+    border: 1px solid #ccc;
+    word-wrap: break-word;
+}
+        .pagebreak {
+            page-break-before: always;
+            /* Force a new page */
+        }
+
+        /* Desktop mode for mobile */
+        @media only screen and (max-width: 767px) {
+            .container {
+                width: 1024px;
+            }
+
+            body {
+                margin: 10px 0 !important;
+                /* Ensure margins are applied on all pages */
+                padding: 0;
+            }
+
+            #contentToPrint {
+                margin: 10px 0 !important;
+                /* Add space before and after pages */
+                padding: 10px;
+                page-break-inside: avoid;
+                /* Avoid cutting content in between */
+            }
+
+            .pagebreak {
+                page-break-before: always;
+                /* Force a new page */
+            }
+        }
 	</style>
 </head>
 
 <body>
 	<div id="contentToPrint" style="margin: 0; padding: 10">
-		<div style="display: flex; border-bottom: 5px solid #ab29b9;">
-			<div>
-				<div class="pageheadline" style="border-bottom: 0; font-size: small;" id="pageheadlinedate"> .</div>
-				<div class="pageheadline" style="display: flex;">Detailed ISAA Report</div>
-			</div>
-			<div style="margin-left: auto; margin-right: 0; ">
-				<div style=" height: 60px;">
+		<div id="ISAA">
+            <div style="display: flex; border-bottom: 5px solid #ab29b9;">
+                <div>
+                    <div class="pageheadline" style="border-bottom: 0; font-size: small;" id="pageheadlinedate"> .</div>
+                    <div class="pageheadline" style="display: flex;">Detailed ISAA Report</div>
+                </div>
+                <div style="margin-left: auto; margin-right: 0; ">
+                    <div style=" height: 60px;">
 
-					<img src="aignosislogo.png" style="max-height:150%; max-width:150%;" alt="">
+                        <img src="aignosislogo.png" style="max-height:150%; max-width:150%;" alt="">
 
 				</div>
 			</div>
@@ -144,109 +202,187 @@
           font-weight: 600;
 		  margin-left: 25px;
         ">
-			Detailed Psychology Report
-		</span>
-		<br />
-		<span style="
+                Detailed Psychology Report
+            </span>
+            <br />
+            <span style="
           font-family: 'Times New Roman', Times, serif;
           font-size: 12px;
           font-weight: 600;
 		  margin-left: 25px;
         ">
-			Summary of Domain Specific Challenges
-		</span>
-		<br /><br />
-		
-		<center>
-		<div class="container" id="contentToPrint">
-			<!-- <h1>Patient Information</h1> -->
-			<div id="patientData" hidden>
-				<!-- Data will be displayed here -->
-			</div>
+                Summary of Domain Specific Challenges
+            </span>
+            <br />
 
-			<div id="chartContainer">
-				<!-- <h2>Percentage Chart</h2> -->
-				<canvas id="barChart"></canvas>
-			</div>
-		</div>
-		</center>
-	
-	
-	<div class="scorecontent">
-		The Aignosis developmental test output was: <p id='message' style="font-size: xx-large; color: #007bff;"></p> 
-		0% developmental score - maximally neurotypical score. A score of 100% developmental challenge is achieved if the most neurotypical response is selected for each relevant question in
+            <center>
+                <center>
+                    <table border="2" style="width: 50%; text-align: center; margin-top: 20px; border-collapse: collapse;">
+                        <tr>
+                            <th style="padding: 10px; background-color: #94059f; color: white;">Field</th>
+                            <th style="padding: 10px; background-color: #94059f; color: white;">Value</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ccc;">Name</td>
+                            <td style="padding: 8px; border: 1px solid #ccc;" id="isaapatientNamecell">_</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ccc;">ISAA Score</td>
+                            <td style="padding: 8px; border: 1px solid #ccc;" id="ISAAScorecell">_</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ccc;">Classification</td>
+                            <td style="padding: 8px; border: 1px solid #ccc;" id="ISAAinterpretation">_</td>
+                        </tr>
+                    </table>
+                </center>
+
+                <div class="container" id="contentToPrint">
+                    <!-- <h1>Patient Information</h1> -->
+                    <div id="patientData" hidden>
+                        <!-- Data will be displayed here -->
+                    </div>
+                    
+                    <div id="chartContainer">
+                        <!-- <h2>Percentage Chart</h2> -->
+                        <canvas id="barChart"></canvas>
+                        <br><br><br><br><br><br><br>
+                        <div id="queryparametersisaa"></div>
+                    </div>
+                </div>
+                
+                <table border="4" style="width: 50%; text-align: center; margin-top: 20px;">
+                    <tr>
+                        <th>Score Range</th>
+                        <th>Classification</th>
+                    </tr>
+                    <tr>
+                        <td>&lt; 70</td>
+                        <td>Normal</td>
+                    </tr>
+                    <tr>
+                        <td>70 - 105</td>
+                        <td>Mild Autism</td>
+                    </tr>
+                    <tr>
+                        <td>106 - 153</td>
+                        <td>Moderate Autism</td>
+                    </tr>
+                    <tr>
+                        <td>&gt; 153</td>
+                        <td>Severe Autism</td>
+                    </tr>
+                </table>
+
+            </center>
+            <div class="scorecontent">
+                The Aignosis ISAA test output was: <span id='isaascore'
+                    style="font-size: xx-large; color: #007bff;"></span> <br>
+                <!-- 0% developmental score - maximally neurotypical score. A score of 100% developmental challenge is achieved if the most neurotypical response is selected for each relevant question in
 		this domain. <br>
 		100%, developmental score = maximally atypical score. A score of 100%. developmental challenge is achieved if the most atypical response is selected for each relevant question in this
-		domain. <br>
-	</div>	
-</div>
-<center>
-	<button id="printBtn">Print PDF</button>
-</center>
+		domain. <br> -->
+            </div>
+            <br> <br><br><br><br>
+            </div>
+		</div>
+		<center>
+			<button id="printBtn">Print PDF</button>
+		</center>
 <script>
 		
 
-	// Function to get URL parameters
-	function getURLParameter(name) {
-		const urlParams = new URLSearchParams(window.location.search);
-		return urlParams.get(name);
-	}
+		function getURLParameter(name) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(name);
+            }
+             // List of M-CHAT questions
+        const ISAAQuestions = [
+            [
+            "Has poor eye contact",
+    "Lacks social smile",
+    "Remains aloof",
+    "Does not reach out to others",
+    "Unable to relate to people",
+    "Unable to respond to social/ environmental cues",
+    "Engages in solitary and repetitive play activities",
+    "Unable to take turns in social interaction",
+    "Does not maintain peer relationships"],[
+    "Shows inappropriate emotional response",
+    "Shows exaggerated emotions",
+    "Engages in self-stimulating emotions",
+    "Lacks fear of danger",
+    "Excited or agitated for no apparent reason"],[
+    "Acquired speech and lost it",
+    "Has difficulty in using non-verbal language or gestures to communicate",
+    "Engages in stereotyped and repetitive use of language",
+    "Engages in echolalic speech",
+    "Produces infantile squeals/ unusual noises",
+    "Unable to initiate or sustain conversation with others",
+    "Uses jargon or meaningless words",
+    "Uses pronoun reversals",
+    "Unable to grasp pragmatics of communication (real meaning)"],[
+    "Engages in stereotyped and repetitive motor mannerisms",
+    "Shows attachment to inanimate objects",
+    "Shows hyperactivity/ restlessness",
+    "Exhibits aggressive behavior",
+    "Throws temper tantrums",
+    "Engages in self-injurious behavior",
+    "Insists on sameness"],[
+    "Unusually sensitive to sensory stimuli",
+    "Stares into space for long periods of time",
+    "Has difficulty in tracking objects",
+    "Has unusual vision",
+    "Insensitive to pain",
+    "Responds to objects/people unusually by smelling, touching or tasting"],[
+    "Inconsistent attention and concentration",
+    "Shows delay in responding",
+    "Has unusual memory of some kind",
+    "Has 'savant' ability"]
+        ];
 
-	// Function to display the data
-	function displayData() {
-		const patientData = {
-			patientId: getURLParameter("patient_id"),
-			socialResponsiveness:
-				parseFloat(getURLParameter("social_response")) || 0,
-			emotionalResponsiveness:
-				parseFloat(getURLParameter("emotional_response")) || 0,
-			speechRecognition:
-				parseFloat(getURLParameter("speech_recognition")) || 0,
-			behaviouralPattern:
-				parseFloat(getURLParameter("behaviour_pattern")) || 0,
-			sensoryAspects: parseFloat(getURLParameter("sensory_aspect")) || 0,
-			cognitiveComponent: parseFloat(getURLParameter("cognitive")) || 0,
-			testscore:parseFloat(getURLParameter("testscore")) || 0,
-			classification:getURLParameter("classification") || 0,
-		};
+        // Function to display M-CHAT responses
+        function displayISAAResponses() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const queryContainer = document.getElementById("queryparametersisaa");
 
-		const patientDataContainer = document.getElementById("patientData");
-		for (const [key, value] of Object.entries(patientData)) {
-			const fieldDiv = document.createElement("div");
-			fieldDiv.classList.add("data-field");
-			fieldDiv.innerHTML = `<span class="label">${key
-				.replace(/([A-Z])/g, " $1")
-				.toUpperCase()}:</span> ${value || "N/A"}`;
-			patientDataContainer.appendChild(fieldDiv);
-		}
+            let ISAATable = `<table border="2" style="width: 100%; text-align: left; border-collapse: collapse;">
+        <tr>
+            <th style="padding: 10px; background-color: #94059f; color: white;">Question</th>
+            <th style="padding: 10px; background-color: #94059f; color: white;">Response</th>
+        </tr>`;
+            const isaasubques=[9,5,9,7,6,4];
+            for (let i = 1; i <= 6; i++) {
+                for(j=0;j<isaasubques[i-1];j++){
+                let response = urlParams.get(`ISAA_${i.toString()}.${j.toString()}`) || "N/A"; // Fetch response for ISAA_01, ISAA_02, ..., ISAA_15
+                ISAATable += `
+        <tr>
+            <td style="padding: 8px; border: 1px solid #ccc;">${ISAAQuestions[i - 1][j]}</td>
+            <td style="padding: 8px; border: 1px solid #ccc; color: #94059f;">${response}</td>
+        </tr>`;}
+            }
 
-		// Generate bar chart
-		createBarChart(patientData);
-		const currentDate = new Date().toLocaleString();
-		document.getElementById('pageheadlinedate').innerHTML = currentDate;
-		document.getElementById('message').innerHTML = patientData.testscore;
-		document.getElementById('classificationmessage').innerHTML = patientData.classification;
-	}
-	
-	// Function to create a horizontal bar chart
-	function createBarChart(data) {
-		const labels = [
-			"Social Responsiveness",
-			"Emotional Responsiveness",
-			"Speech Recognition",
-			"Behavioural Pattern",
-			"Sensory Aspects",
-			"Cognitive Component",
-		];
+            ISAATable += `</table>`;
 
-		const values = [
-			data.socialResponsiveness,
-			data.emotionalResponsiveness,
-			data.speechRecognition,
-			data.behaviouralPattern,
-			data.sensoryAspects,
-			data.cognitiveComponent,
-		];
+            queryContainer.innerHTML = ISAATable;
+        }
+            // Function to display the data
+            function displayData() {
+                const patientData = {
+                    patientId: getURLParameter("patient_id"),
+                    socialResponsiveness:
+                        parseFloat(getURLParameter("social_response")) || 0,
+                    emotionalResponsiveness:
+                        parseFloat(getURLParameter("emotional_response")) || 0,
+                    speechRecognition:
+                        parseFloat(getURLParameter("speech_recognition")) || 0,
+                    behaviouralPattern:
+                        parseFloat(getURLParameter("behaviour_pattern")) || 0,
+                    sensoryAspects: parseFloat(getURLParameter("sensory_aspect")) || 0,
+                    cognitiveComponent: parseFloat(getURLParameter("cognitive")) || 0,
+                    testscore: parseFloat(getURLParameter("testscore")) || 0,
+                    isaaInterpretation: getURLParameter("classification") || "",
+                };
 
 		const ctx = document.getElementById("barChart").getContext("2d");
 		new Chart(ctx, {
@@ -289,31 +425,249 @@
 		});
 	}
 
+                // Generate bar chart
+                createBarChart(patientData);
+                const currentDate = new Date().toLocaleString();
+                document.getElementById('pageheadlinedate').innerHTML = currentDate;
+                document.getElementById('isaascore').innerHTML = patientData.testscore;
+                document.getElementById('isaaInterpretationmessage').innerHTML = patientData.isaaInterpretation;
+            }
+
+            // Function to create a horizontal bar chart
+            function createBarChart(data) {
+                console.log(data);
+                const labels = [
+                    "Social Responsiveness",
+                    "Emotional Responsiveness",
+                    "Speech Recognition",
+                    "Behavioural Pattern",
+                    "Sensory Aspects",
+                    "Cognitive Component",
+                ];
+
+                const values = [
+                    data.socialResponsiveness,
+                    data.emotionalResponsiveness,
+                    data.speechRecognition,
+                    data.behaviouralPattern,
+                    data.sensoryAspects,
+                    data.cognitiveComponent,
+                ];
+
+                const ctx = document.getElementById("barChart").getContext("2d");
+                new Chart(ctx, {
+                    type: "bar",
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: "Percentage",
+                                data: values,
+                                backgroundColor: [
+                                    "#93ef93",
+                                    "#8bd0fa",
+                                    "#fffe35",
+                                    "#bc81f6",
+                                    "#f7a000",
+                                    "#cbcbcb",
+                                ],
+                                borderColor: [
+                                    "rgba(75, 192, 192, 1)",
+                                    "rgba(54, 162, 235, 1)",
+                                    "rgba(255, 206, 86, 1)",
+                                    "rgba(153, 102, 255, 1)",
+                                    "rgba(255, 159, 64, 1)",
+                                    "rgba(201, 203, 207, 1)",
+                                ],
+                                borderWidth: 1,
+                            },
+                        ],
+                    },
+                    options: {
+                        indexAxis: "y", // This reverses the axes
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                max: 100,
+                            },
+                        },
+                    },
+                });
+            }
 	// Call the function to display data once the page loads
-	window.onload = displayData;
+	// window.onload = displayData;
 
 	// Add functionality to the Print PDF button
 	document
 		.getElementById("printBtn")
-		.addEventListener("click", function () {
+		.addEventListener("click", async function () {
 			const element = document.getElementById("contentToPrint");
 			const options = {
-				margin: [0, 0, 0, 0], // No margins
+				margin: [10, 10, 10, 10], // No margins
 				filename: "patient_data.pdf",
 				image: { type: "jpeg", quality: 0.98 },
 				html2canvas: {
 					scale: 2, // Higher scale for better quality
-					width: element.offsetWidth, // Use container width
+					width: element.offsetWidth, // Use container width 
 				},
-				jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+				jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
 			};
-			html2pdf()
-				.set({
+			// html2pdf()
+			// 	.set({
+			// 		html2canvas: { scrollX: 0, scrollY: 0 },
+			// 	})
+			// 	.from(element)
+			// 	.save();
+			const pdfBlob = await html2pdf().set({
 					html2canvas: { scrollX: 0, scrollY: 0 },
-				})
-				.from(element)
-				.save();
+				}).from(element).outputPdf("blob");
+            const generatedPdfBytes = await pdfBlob.arrayBuffer();
+
+            // Load ppt1.pdf
+            const response = await fetch("Testing Report 2.pdf");
+            const ppt1Bytes = await response.arrayBuffer();
+
+            // Merge the PDFs
+            const { PDFDocument } = PDFLib;
+            const mergedPdf = await PDFDocument.create();
+
+            const pdf1 = await PDFDocument.load(generatedPdfBytes);
+            const pdf2 = await PDFDocument.load(ppt1Bytes);
+
+            const copiedPages1 = await mergedPdf.copyPages(pdf1, pdf1.getPageIndices());
+            copiedPages1.forEach((page) => mergedPdf.addPage(page));
+
+            const copiedPages2 = await mergedPdf.copyPages(pdf2, pdf2.getPageIndices());
+            copiedPages2.forEach((page) => mergedPdf.addPage(page));
+
+            const mergedPdfBytes = await mergedPdf.save();
+
+            // Download the merged PDF
+            const mergedPdfBlob = new Blob([mergedPdfBytes], { type: "application/pdf" });
+            saveAs(mergedPdfBlob, "merged_report.pdf");
 		});
+
+
+		 // Update on page load
+		 window.onload = () => {
+            displayISAAResponses();
+			function formatToOneDecimal(value) {
+				return parseFloat(value).toFixed(1);
+			}
+
+            // Populate the table
+            const urlParams = new URLSearchParams(window.location.search);
+            const patientName = urlParams.get("Name") || "N/A";
+			const isaaInterpretation = urlParams.get("classification") || "N/A";
+            const isaascore = formatToOneDecimal(urlParams.get("testscore") || 0);
+
+            // const formattedClassification = isNaN(classification) ? classification : formatToOneDecimal(classification);
+            const currentDate = new Date().toLocaleString();
+            // const isaaInterpretation = urlParams.get("isaaInterpretation") || 0;
+            document.getElementById("ISAAinterpretation").innerHTML = isaaInterpretation;
+            document.getElementById('ISAAScorecell').innerHTML = isaascore;
+            // document.getElementById('classificationmessage').innerHTML = formattedClassification;
+
+           
+            displayData();
+            
+            // Extract data from URL
+            const chronologicalAge = urlParams.get("Age") || "N/A";
+            // Populate the table
+            console.log(patientName);
+            // document.getElementById("patientNamecell").innerHTML = patientName;
+            document.getElementById("isaapatientNamecell").innerHTML = patientName;
+            // document.getElementById("chronologicalAgecell").innerHTML = chronologicalAge + " Years";
+            // const classification = urlParams.get("dq") || "N/A";
+            // const formattedClassification = isNaN(classification) ? classification : formatToOneDecimal(classification);
+            // document.getElementById('classificationmessage').innerHTML = formattedClassification;
+
+
+
+
+        };
+
+		
+		document.getElementById("printBtn").addEventListener("click", async function () {
+        const element = document.getElementById("contentToPrint");
+
+        if (!element) {
+            console.error("Error: #contentToPrint not found!");
+            alert("Error: Unable to find content to print.");
+            return;
+        }
+
+        const options = {
+            margin: [10, 10, 10, 10],
+            filename: "new_patient_data.pdf",
+            image: { type: "jpeg", quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+        };
+
+        try {
+            // Ensure content is fully loaded before conversion
+            await new Promise(resolve => setTimeout(resolve, 500));
+
+            // Generate new PDF as blob
+            console.log("Generating new PDF from content...");
+            const newPdfBlob = await html2pdf().from(element).toPdf().output('blob');
+            const newPdfBytes = await newPdfBlob.arrayBuffer();
+            console.log("New PDF generated successfully.");
+
+            // Fetch existing PDF (PDF1.pdf)
+            console.log("Fetching existing PDF1.pdf...");
+            const existingPdfResponse = await fetch('PDF1.pdf');
+            if (!existingPdfResponse.ok) throw new Error("Failed to load PDF1.pdf");
+            const existingPdfBytes = await existingPdfResponse.arrayBuffer();
+            console.log("Existing PDF loaded successfully.");
+
+            // Load PDFs using PDF-Lib
+            const { PDFDocument } = window.PDFLib;
+            const existingPdfDoc = await PDFDocument.load(existingPdfBytes);
+            const newPdfDoc = await PDFDocument.load(newPdfBytes);
+            const mergedPdf = await PDFDocument.create();
+
+            // Get the first page to determine the size
+            const existingPages = await existingPdfDoc.copyPages(existingPdfDoc, [0]);
+            if (existingPages.length === 0) throw new Error("No pages found in PDF1.pdf");
+
+            const firstExistingPage = existingPages[0];
+            const width = firstExistingPage?.getWidth() || 612;  // Default to A4 width if undefined
+            const height = firstExistingPage?.getHeight() || 792; // Default to A4 height if undefined
+            console.log(`Using dimensions: Width=${width}, Height=${height}`);
+
+            async function addPages(sourceDoc, targetDoc) {
+                const pages = await targetDoc.copyPages(sourceDoc, sourceDoc.getPageIndices());
+                pages.forEach(page => {
+                    page.setWidth(width);
+                    page.setHeight(height);
+                    targetDoc.addPage(page);
+                });
+            }
+
+            // Merge PDFs while maintaining page sizes
+            await addPages(existingPdfDoc, mergedPdf);
+            await addPages(newPdfDoc, mergedPdf);
+
+            // Save merged PDF
+            console.log("Saving merged PDF...");
+            const mergedPdfBytes = await mergedPdf.save();
+            const blob = new Blob([mergedPdfBytes], { type: "application/pdf" });
+
+            // Trigger download
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            const urlParams = new URLSearchParams(window.location.search);
+            const patientName = urlParams.get("Name") || "N/A";
+            link.download = `${patientName}_Report.pdf`;
+            link.click();
+            console.log("Merged PDF downloaded successfully.");
+        } catch (error) {
+            console.error("Error generating PDF:", error);
+            alert("Failed to generate PDF. See console for details.");
+        }
+    });
 </script>
 </body>
 
