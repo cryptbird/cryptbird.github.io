@@ -167,6 +167,9 @@ td, th {
 </head>
 
 <body>
+	<center>
+		<button id="printBtn">Print PDF</button>
+	</center>
 	<div id="contentToPrint" style="margin: 0; padding: 10">
 		<div id="ISAA">
             <div style="display: flex; border-bottom: 5px solid #ab29b9;">
@@ -192,7 +195,7 @@ td, th {
 			patterns through advanced A1 algorithms trained to detect subtle markers
 			of developmental differences.
 			<br /><br />
-			The system provides outputs as <span id="classificationmessage" style="font-size: 15px; color: #007bff;"></span>
+			The system provides outputs as <span id="isaaInterpretationmessage" style="font-size: 15px; color: #007bff;"></span>
 			<br /><br />
 		</div>
 		<span style="
@@ -286,12 +289,18 @@ td, th {
             <br> <br><br><br><br>
             </div>
 		</div>
-		<center>
-			<button id="printBtn">Print PDF</button>
-		</center>
+		
 <script>
 		
-
+		const labels = [
+                    "Social Responsiveness",
+                    "Emotional Responsiveness",
+                    "Speech Recognition",
+                    "Behavioural Pattern",
+                    "Sensory Aspects",
+                    "Cognitive Component",
+                ];
+		
 		function getURLParameter(name) {
                 const urlParams = new URLSearchParams(window.location.search);
                 return urlParams.get(name);
@@ -366,8 +375,8 @@ td, th {
 
             queryContainer.innerHTML = ISAATable;
         }
-            // Function to display the data
-            function displayData() {
+        // Function to display the data
+        function displayData() {
                 const patientData = {
                     patientId: getURLParameter("patient_id"),
                     socialResponsiveness:
@@ -383,7 +392,18 @@ td, th {
                     testscore: parseFloat(getURLParameter("testscore")) || 0,
                     isaaInterpretation: getURLParameter("classification") || "",
                 };
-
+				const currentDate = new Date().toLocaleString();
+                document.getElementById('pageheadlinedate').innerHTML = currentDate;
+                document.getElementById('isaascore').innerHTML = patientData.testscore;
+                document.getElementById('isaaInterpretationmessage').innerHTML = patientData.isaaInterpretation;
+				const values = [
+                    patientData.socialResponsiveness,
+                    patientData.emotionalResponsiveness,
+                    patientData.speechRecognition,
+                    patientData.behaviouralPattern,
+                    patientData.sensoryAspects,
+                    patientData.cognitiveComponent,
+                ];
 		const ctx = document.getElementById("barChart").getContext("2d");
 		new Chart(ctx, {
 			type: "bar",
@@ -423,15 +443,12 @@ td, th {
 				},
 			},
 		});
-	}
+	
 
                 // Generate bar chart
                 createBarChart(patientData);
-                const currentDate = new Date().toLocaleString();
-                document.getElementById('pageheadlinedate').innerHTML = currentDate;
-                document.getElementById('isaascore').innerHTML = patientData.testscore;
-                // document.getElementById('isaaInterpretationmessage').innerHTML = patientData.isaaInterpretation;
-            
+                
+            }
 
             // Function to create a horizontal bar chart
             function createBarChart(data) {
@@ -558,6 +575,7 @@ td, th {
             // Populate the table
             const urlParams = new URLSearchParams(window.location.search);
             const patientName = urlParams.get("Name") || "N/A";
+			document.getElementById("isaapatientNamecell").innerHTML = patientName;
 			const isaaInterpretation = urlParams.get("classification") || "N/A";
             const isaascore = formatToOneDecimal(urlParams.get("testscore") || 0);
 
@@ -576,7 +594,7 @@ td, th {
             // Populate the table
             console.log(patientName);
             // document.getElementById("patientNamecell").innerHTML = patientName;
-            document.getElementById("isaapatientNamecell").innerHTML = patientName;
+            
             // document.getElementById("chronologicalAgecell").innerHTML = chronologicalAge + " Years";
             // const classification = urlParams.get("dq") || "N/A";
             // const formattedClassification = isNaN(classification) ? classification : formatToOneDecimal(classification);
