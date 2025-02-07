@@ -362,7 +362,7 @@ td, th {
         </tr>`;
             const isaasubques=[9,5,9,7,6,4];
             for (let i = 1; i <= 6; i++) {
-                for(j=0;j<isaasubques[i-1];j++){
+                for(j=1;j<=isaasubques[i-1];j++){
                 let response = urlParams.get(`ISAA_${i.toString()}.${j.toString()}`) || "N/A"; // Fetch response for ISAA_01, ISAA_02, ..., ISAA_15
                 ISAATable += `
         <tr>
