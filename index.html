@@ -194,8 +194,9 @@ td, th {
 			delays in children aged 2 to 10 years. The test evaluates developmental
 			patterns through advanced A1 algorithms trained to detect subtle markers
 			of developmental differences.
-			<br />
-			The system provides outputs as <span id="isaaInterpretationmessage" style="font-size: 15px; color: #007bff;"></span>
+			<br /> The Aignosis ISAA test output was: <span id='isaascore'
+            style="font-size: xx-large; color: #007bff;"></span> 
+			The system provides outputs as <span id="isaaInterpretationmessage" style="font-size: 15px; color: #007bff;"></span> 
 			<br />
 		</div>
 		<span style="
@@ -249,12 +250,12 @@ td, th {
                     <div id="chartContainer">
                         <!-- <h2>Percentage Chart</h2> -->
                         <canvas id="barChart"></canvas>
-                        <br><br><br><br><br><br><br>
+                        <br><br><br><br><br><br><br><br>
                         <div id="queryparametersisaa"></div>
                     </div>
                 </div>
                 
-                <table border="4" style="width: 50%; text-align: center; margin-top: 20px;">
+                <table border="4" style="width: 50%; text-align: center; margin-top: 10px;">
                     <tr>
                         <th>Score Range</th>
                         <th>Classification</th>
@@ -279,8 +280,7 @@ td, th {
 
             </center>
             <div class="scorecontent">
-                The Aignosis ISAA test output was: <span id='isaascore'
-                    style="font-size: xx-large; color: #007bff;"></span> <br>
+                
                 <!-- 0% developmental score - maximally neurotypical score. A score of 100% developmental challenge is achieved if the most neurotypical response is selected for each relevant question in
 		this domain. <br>
 		100%, developmental score = maximally atypical score. A score of 100%. developmental challenge is achieved if the most atypical response is selected for each relevant question in this
@@ -373,7 +373,7 @@ td, th {
     for (let i = 1; i <= 6; i++) {
         ISAATables += `
             <h3 style="color: #94059f; font-family: Arial, sans-serif;">${domainNames[i - 1]}</h3>
-            <table border="2" style="width: 100%; text-align: left; border-collapse: collapse; margin-bottom: 20px;">
+            <table border="2" style="width: 100%; text-align: left; border-collapse: collapse; margin-bottom: -3px;">
                 <tr>
                     <th style="padding: 10px; background-color: #94059f; color: white;">Question</th>
                     <th style="padding: 10px; background-color: #94059f; color: white;">Response</th>
