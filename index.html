@@ -355,26 +355,45 @@ td, th {
             const urlParams = new URLSearchParams(window.location.search);
             const queryContainer = document.getElementById("queryparametersisaa");
 
-            let ISAATable = `<table border="2" style="width: 100%; text-align: left; border-collapse: collapse;">
-        <tr>
-            <th style="padding: 10px; background-color: #94059f; color: white;">Question</th>
-            <th style="padding: 10px; background-color: #94059f; color: white;">Response</th>
-        </tr>`;
-            const isaasubques=[9,5,9,7,6,4];
-            for (let i = 1; i <= 6; i++) {
-                for(j=1;j<=isaasubques[i-1];j++){
-                let response = urlParams.get(`ISAA_${i.toString()}.${j.toString()}`) || "N/A"; // Fetch response for ISAA_01, ISAA_02, ..., ISAA_15
-                ISAATable += `
-        <tr>
-            <td style="padding: 8px; border: 1px solid #ccc;">${ISAAQuestions[i - 1][j]}</td>
-            <td style="padding: 8px; border: 1px solid #ccc; color: #94059f;">${response}</td>
-        </tr>`;}
-            }
+           // Domain names
+    const domainNames = [
+        "Social Relationship and Reciprocity",
+        "Emotional Responsiveness",
+        "Speech, Language, and Communication",
+        "Behavioral Patterns",
+        "Sensory Aspects",
+        "Cognitive Component"
+    ];
 
-            ISAATable += `</table>`;
+    // Number of questions in each domain
+    const isaasubques = [9, 5, 9, 7, 6, 4];
 
-            queryContainer.innerHTML = ISAATable;
+    let ISAATables = ""; // Store all tables
+
+    for (let i = 1; i <= 6; i++) {
+        ISAATables += `
+            <h3 style="color: #94059f; font-family: Arial, sans-serif;">${domainNames[i - 1]}</h3>
+            <table border="2" style="width: 100%; text-align: left; border-collapse: collapse; margin-bottom: 20px;">
+                <tr>
+                    <th style="padding: 10px; background-color: #94059f; color: white;">Question</th>
+                    <th style="padding: 10px; background-color: #94059f; color: white;">Response</th>
+                </tr>`;
+
+        for (let j = 1; j <= isaasubques[i - 1]; j++) {
+            let response = urlParams.get(`ISAA_${i}.${j}`) || "N/A"; // Fetch response for each question
+            ISAATables += `
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;">${ISAAQuestions[i - 1][j - 1]}</td>
+                    <td style="padding: 8px; border: 1px solid #ccc; color: #94059f;">${response}</td>
+                </tr>`;
         }
+
+        ISAATables += `</table>`; // Close the table
+    }
+
+    queryContainer.innerHTML = ISAATables; // Insert all tables into the container
+}
+
         // Function to display the data
         function displayData() {
                 const patientData = {
